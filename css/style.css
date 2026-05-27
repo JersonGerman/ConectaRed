@@ -1,0 +1,21 @@
+:root {
+  --rojo:        #c0392b;   /* color principal */
+  --rojo-oscuro: #96281b;   /* hover de botones */
+  --texto:       #222222;   /* texto principal */
+  --gris:        #666666;   /* texto secundario */
+  --fondo:       #ffffff;   /* fondo de la pagina */
+  --sombra:      0 2px 6px rgba(0, 0, 0, 0.08);
+  --radio:       8px;       /* redondeo de esquinas */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #222222;
+}
