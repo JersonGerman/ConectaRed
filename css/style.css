@@ -1,21 +1,189 @@
-:root {
-  --rojo:        #c0392b;   /* color principal */
-  --rojo-oscuro: #96281b;   /* hover de botones */
-  --texto:       #222222;   /* texto principal */
-  --gris:        #666666;   /* texto secundario */
-  --fondo:       #ffffff;   /* fondo de la pagina */
-  --sombra:      0 2px 6px rgba(0, 0, 0, 0.08);
-  --radio:       8px;       /* redondeo de esquinas */
+@import "base.css";
+
+/* ==========================================================================
+   Componente: Header Principal
+   ========================================================================== */
+
+.main-header {
+    display: flex;
+    justify-content: space-between; /* Empuja la navegación a la izquierda y el usuario a la derecha */
+    align-items: center; /* Centra los elementos verticalmente */
+    background-color: #ffffff; /* Fondo blanco puro según el diseño */
+    padding-inline: var(
+        --space-md
+    ); /* Espaciado interno izquierdo y derecho (2rem) */
+    height: 70px; /* Altura fija estándar para barras de navegación */
+    box-shadow: var(--sombra); /* Aplica la sombra suave de tu base.css */
+    border-bottom: 1px solid var(--color-accent); /* Línea sutil de separación inferior */
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Contenedor de los enlaces */
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+
+    margin-left: auto;
+    margin-right: var(
+        --space-xl
+    ); /* Genera una separación amplia y fija antes de llegar al avatar */
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #222222;
+.header-nav .logo {
+    height: 32px; /* Define una altura fija adecuada para el header */
+    width: auto; /* Mantiene la proporción de la imagen */
+    object-fit: contain;
+}
+
+/* Enlaces individuales */
+.nav-link {
+    font-family: var(
+        --font-family-heading
+    ); /* Poppins para elementos de interfaz */
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text);
+    padding-block: var(--space-1); /* Zona interactiva vertical */
+}
+
+/* Estado Hover (Pasar el mouse) */
+.nav-link:hover {
+    color: var(--rojo-oscuro); /* Cambio de color usando tus variables */
+}
+
+/* Estado Activo (Página actual) */
+.nav-link.active {
+    color: var(--rojo-oscuro);
+    font-weight: 600;
+}
+
+/* Contenedor e Imagen del Avatar */
+.header-user {
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Hace la imagen completamente circular */
+    object-fit: cover; /* Evita que la foto se deforme si no es cuadrada */
+    border: 2px solid var(--color-accent);
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   Componente: Footer Principal
+   ========================================================================== */
+
+.main-footer {
+    background-color: var(
+        --color-dark
+    ); /* El color oscuro #262641 de tu base.css */
+    color: #ffffff; /* Texto blanco para contraste */
+    padding-block: var(--space-6); /* Espaciado interno arriba y abajo (3rem) */
+    padding-inline: var(--space-md); /* Espaciado interno a los lados (2rem) */
+}
+
+/* Contenedor que distribuye las 4 columnas */
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que baje de línea en pantallas chicas */
+    justify-content: space-between; /* Separa las columnas equitativamente */
+    gap: var(--space-md); /* Espacio mínimo de separación entre bloques */
+    max-width: 1200px; /* Ancho máximo contenedor para pantallas grandes */
+    margin: 0 auto; /* Centra todo el bloque en la pantalla */
+}
+
+/* Columna de la marca (ocupa un poco más de espacio) */
+.footer-brand {
+    flex: 1 1 300px; /* Crece, se achica y base de 300px */
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin-bottom: var(--space-2);
+}
+
+.footer-logo img {
+    height: 32px; /* Ajuste del tamaño del logo */
+}
+
+.logo-text {
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.logo-highlight {
+    color: var(--color-secondary); /* El verde claro de tu paleta */
+}
+
+.footer-description {
+    color: var(
+        --color-text-subtle
+    ); /* Color grisáceo para textos secundarios */
+    font-size: 0.9rem;
+    max-width: 260px;
+}
+
+/* Columnas de listas de enlaces y redes */
+.footer-links-group,
+.footer-socials {
+    flex: 1 1 160px; /* Base de 160px para alineación consistente */
+}
+
+.footer-title {
+    color: #ffffff; /* Forzar títulos en blanco */
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--space-3); /* Separación con la lista */
+}
+
+.footer-list {
+    list-style: none; /* Quita los puntitos negros de la lista */
+}
+
+.footer-list li {
+    margin-bottom: var(--space-1); /* Separación vertical entre enlaces */
+}
+
+.footer-list a {
+    color: var(--color-text-subtle);
+    font-size: 0.9rem;
+}
+
+.footer-list a:hover {
+    color: var(--color-primary); /* Iluminación celeste al pasar el mouse */
+}
+
+/* Contenedor de iconos de redes */
+.social-icons {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.1
+    ); /* Fondo blanco sutil transparente */
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.social-icon:hover {
+    background-color: var(--color-primary);
+    color: var(--color-dark);
 }
