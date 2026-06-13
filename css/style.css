@@ -296,24 +296,104 @@
     color:#262641;
 }
 
+.comenzar-btn .btn-icon {
+    height: 18px;
+    width: auto;
+    object-fit: contain;
+}
+
 
 /* ==========================================================================
    Mentores
    ========================================================================== */
 .mentores-section{
     width: 100%;
-    min-height: 500px;  
-    height: 700px;
+    min-height: 400px;  
+    height: 450px;
 }
 
 .mentores-title{
-    margin-top: 50px;
     text-align: center;
+    margin-top: 80px;
+    font-size: 2rem;
     color: #262641;
 }
 
 .mentores-description{
     text-align: center;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 50px;
     color: #5c5c77;
+}
+
+.perfiles-content{
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+}
+
+.perfil {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    gap: 50px;
+    width: 400px;
+}
+
+.perfil-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.perfil-title {
+    color: #262641;
+    font-size: 17px;
+    margin: 0;
+}
+
+.perfil-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.perfil-subtitle {
+    font-weight: 500;
+    color: #9797aa;
+    font-size: 0.9rem;
+}
+
+.perfil-description {
+    color: #5c5c77;
+    line-height: 1.5;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.perfil-icon {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+.rating-content {
+    display: flex;
+    gap: 10px;
+    justify-content: left;
+}
+
+.txt-rating {
+    color: #5c5c77;
+    font-size: 20px;
+}
+
+.txt-rating .rating-icon {
+    height: 12px;
+    width: auto;
+    object-fit: contain;
 }
