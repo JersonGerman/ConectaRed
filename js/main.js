@@ -40,4 +40,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // Ejecutar la carga de los componentes bases instalados en el DOM
   loadComponent("header-container", "components/header.html");
   loadComponent("footer-container", "components/footer.html");
+  loadComponent("header-landing-container", "components/header-landing.html");
 });
