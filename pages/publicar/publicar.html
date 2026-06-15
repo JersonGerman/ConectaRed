@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ConectaRed - Publicar Materiales</title>
+        <link rel="stylesheet" href="../../css/style.css" />
+    </head>
+    <body>
+        <div id="header-container"></div>
+
+        <div class="app-layout">
+            <div id="sidebar-container"></div>
+
+            <main class="main-content">
+                <div
+                    class="upload-container"
+                    style="max-width: 900px; margin: 0 auto; padding: 10px"
+                >
+                    <h1
+                        style="
+                            font-family:
+                                var(--font-family-heading), &quot;Poppins&quot;,
+                                sans-serif;
+                            font-size: 1.8rem;
+                            color: #2d3748;
+                            margin-bottom: 8px;
+                        "
+                    >
+                        Publicar Material Didáctico
+                    </h1>
+                    <p
+                        style="
+                            color: #718096;
+                            font-size: 0.95rem;
+                            margin-bottom: 24px;
+                        "
+                    >
+                        Compartid vuestros documentos en formato PDF con la
+                        comunidad de estudiantes.
+                    </p>
+
+                    <div
+                        style="
+                            display: flex;
+                            gap: 24px;
+                            align-items: flex-start;
+                        "
+                    >
+                        <div
+                            id="upload-drop-zone"
+                            style="
+                                flex: 1;
+                                border: 2px dashed #cbd5e0;
+                                border-radius: 12px;
+                                padding: 40px 20px;
+                                text-align: center;
+                                background-color: #f7fafc;
+                                cursor: pointer;
+                                transition: all 0.2s ease;
+                            "
+                        >
+                            <span
+                                style="
+                                    font-size: 3rem;
+                                    display: block;
+                                    margin-bottom: 12px;
+                                "
+                                >📚</span
+                            >
+                            <p
+                                style="
+                                    font-size: 1rem;
+                                    color: #4a5568;
+                                    font-weight: 600;
+                                    margin: 0;
+                                "
+                            >
+                                Arrastrad aquí vuestros archivos PDF
+                            </p>
+                            <p
+                                style="
+                                    font-size: 0.85rem;
+                                    color: #a0aec0;
+                                    margin: 6px 0 12px;
+                                "
+                            >
+                                o pinchad para examinar vuestro equipo
+                            </p>
+                            <span
+                                style="
+                                    display: inline-block;
+                                    background-color: #3182ce;
+                                    color: #ffffff;
+                                    padding: 8px 16px;
+                                    border-radius: 6px;
+                                    font-size: 0.85rem;
+                                    font-weight: 500;
+                                "
+                                >Seleccionar Archivos</span
+                            >
+                            <input
+                                type="file"
+                                id="upload-file-input"
+                                multiple
+                                accept=".pdf"
+                                style="display: none"
+                            />
+                        </div>
+
+                        <div
+                            style="
+                                flex: 1.2;
+                                background: #ffffff;
+                                border: 1px solid #edf2f7;
+                                border-radius: 12px;
+                                padding: 20px;
+                                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+                            "
+                        >
+                            <h2
+                                style="
+                                    font-size: 0.9rem;
+                                    font-weight: 700;
+                                    color: #4a5568;
+                                    margin-bottom: 16px;
+                                    text-transform: uppercase;
+                                    letter-spacing: 0.05em;
+                                "
+                            >
+                                Cola de cargas pendientes
+                            </h2>
+
+                            <form
+                                id="publish-form"
+                                style="
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 16px;
+                                "
+                            >
+                                <ul
+                                    id="publishing-file-list"
+                                    style="
+                                        list-style: none;
+                                        padding: 0;
+                                        margin: 0;
+                                        display: flex;
+                                        flex-direction: column;
+                                        gap: 12px;
+                                    "
+                                >
+                                    <li
+                                        id="no-files-placeholder"
+                                        style="
+                                            text-align: center;
+                                            color: #a0aec0;
+                                            font-style: italic;
+                                            padding: 30px;
+                                            font-size: 0.9rem;
+                                        "
+                                    >
+                                        No habéis seleccionado ningún documento
+                                        aún.
+                                    </li>
+                                </ul>
+
+                                <button
+                                    type="submit"
+                                    id="btn-submit-all"
+                                    disabled
+                                    style="
+                                        width: 100%;
+                                        background-color: #cbd5e0;
+                                        color: #ffffff;
+                                        border: none;
+                                        padding: 12px;
+                                        border-radius: 8px;
+                                        font-size: 1rem;
+                                        font-weight: 600;
+                                        cursor: not-allowed;
+                                        transition: background-color 0.2s;
+                                    "
+                                >
+                                    Publicar Materiales Seleccionados
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div id="footer-container"></div>
+
+        <script src="../../js/dashboard-data.js"></script>
+        <script src="../../js/main.js"></script>
+        <script src="../../js/publicar.js"></script>
+    </body>
+</html>

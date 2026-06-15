@@ -74,7 +74,7 @@ function renderDynamicSidebar(role) {
   if (role === "VOLUNTEER") {
     mainMenuItems = [
       { text: "Dashboard", icon: "📊", url: "/pages/dashboard/dashboard.html" },
-      { text: "Publicar", icon: "📝", url: "#" },
+      { text: "Publicar", icon: "📝", url: "/pages/publicar/publicar.html" },
       { text: "Donaciones", icon: "📈", url: "#" },
       { text: "Logros", icon: "🏆", url: "#", badge: "3" },
       { text: "Certificados", icon: "📜", url: "#" },
