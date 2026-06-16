@@ -60,6 +60,39 @@ html {
     width: auto;
     object-fit: contain;
 }
+/* BOTONES LANDING */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-login {
+    color: #262641;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #f3f3f3;
+}
+
+.btn-unete {
+    background-color: #8cdfde;
+    color: #262641;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn-unete:hover {
+    background-color: #7ABFC0;
+    color: #262641;
+}
 
 /* ==========================================================================
    Componente: Header Principal
