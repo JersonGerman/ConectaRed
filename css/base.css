@@ -14,9 +14,12 @@
   --rojo-oscuro: #6db9b8;
   --texto: var(--color-text);
   --gris: var(--color-text-subtle);
+  --blanco: #ffffff;
   --fondo: var(--color-light);
   --sombra: 0 2px 6px rgba(38, 38, 65, 0.08);
   --radio: 8px;
+
+  --color-button-hover: #7abfc0;
 
   --font-family-base: "Work Sans", sans-serif;
   --font-family-heading: "Poppins", sans-serif;
@@ -89,6 +92,12 @@ input,
 textarea,
 select {
   font: inherit;
+  border: none;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
 }
 
 .section {
