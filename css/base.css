@@ -1,44 +1,47 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap");
 
 :root {
-    --color-primary: #8cdfde;
-    --color-secondary: #b5e7a2;
-    --color-tertiary: #efe88f;
-    --color-dark: #262641;
-    --color-text: #5c5c77;
-    --color-text-subtle: #9797aa;
-    --color-accent: #eef2f5;
-    --color-light: #fafcfe;
+  --color-primary: #8cdfde;
+  --color-secondary: #b5e7a2;
+  --color-tertiary: #efe88f;
+  --color-dark: #262641;
+  --color-text: #5c5c77;
+  --color-text-subtle: #9797aa;
+  --color-accent: #eef2f5;
+  --color-light: #fafcfe;
 
-    --rojo: var(--color-primary);
-    --rojo-oscuro: #6db9b8;
-    --texto: var(--color-text);
-    --gris: var(--color-text-subtle);
-    --fondo: var(--color-light);
-    --sombra: 0 2px 6px rgba(38, 38, 65, 0.08);
-    --radio: 8px;
+  --rojo: var(--color-primary);
+  --rojo-oscuro: #6db9b8;
+  --texto: var(--color-text);
+  --gris: var(--color-text-subtle);
+  --blanco: #ffffff;
+  --fondo: var(--color-light);
+  --sombra: 0 2px 6px rgba(38, 38, 65, 0.08);
+  --radio: 8px;
 
-    --font-family-base: "Work Sans", sans-serif;
-    --font-family-heading: "Poppins", sans-serif;
-    --line-height-base: 1.6;
-    --transition-base: 0.2s ease;
+  --color-button-hover: #7abfc0;
 
-    --space-1: 0.5rem;
-    --space-2: 1rem;
-    --space-3: 1.5rem;
-    --space-4: 2rem;
-    --space-5: 2.5rem;
-    --space-6: 3rem;
-    --space-7: 3.5rem;
-    --space-8: 4rem;
-    --space-9: 4.5rem;
-    --space-10: 5rem;
+  --font-family-base: "Work Sans", sans-serif;
+  --font-family-heading: "Poppins", sans-serif;
+  --line-height-base: 1.6;
+  --transition-base: 0.2s ease;
 
-    --space-xs: var(--space-1);
-    --space-sm: var(--space-2);
-    --space-md: var(--space-4);
-    --space-lg: var(--space-6);
-    --space-xl: var(--space-8);
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 2.5rem;
+  --space-6: 3rem;
+  --space-7: 3.5rem;
+  --space-8: 4rem;
+  --space-9: 4.5rem;
+  --space-10: 5rem;
+
+  --space-xs: var(--space-1);
+  --space-sm: var(--space-2);
+  --space-md: var(--space-4);
+  --space-lg: var(--space-6);
+  --space-xl: var(--space-8);
 }
 
 * {
@@ -88,7 +91,13 @@ button,
 input,
 textarea,
 select {
-    font: inherit;
+  font: inherit;
+  border: none;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
 }
 
 .section {
