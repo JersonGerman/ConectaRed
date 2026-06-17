@@ -1,4 +1,4 @@
-@import "base.css";
+@import "../../css/base.css";
 
 html {
     scroll-behavior: smooth;
@@ -524,3 +524,306 @@ html {
     background-color: #7d8181;
     color:#262641;
 }
+
+
+/* Responsive Table */
+@media (min-width: 768px) {
+    .landing-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ffffff;
+        padding-inline: var(--space-md);
+        height: 70px;
+        box-shadow: var(--sombra);
+        border-bottom: 1px solid var(--color-accent);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: transform 0.3 ease;
+    }
+
+    .header-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-left: 165px;
+    }
+
+    .header-nav {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        margin-left: auto;
+        margin-right: var(--space-xl);
+    }
+
+    .header-nav .nav-link {
+        display: block;
+    }
+
+    .header-nav .nav-link.unete-btn {
+        background-color: #8cdfde;
+        display: flex;
+        color: #262641;
+        padding: 10px 30px;
+        border-radius: 8px;
+
+    }
+
+    .logo-text {
+        font-family: var(--font-family-heading);
+        font-weight: 700;
+        font-size: 1.25rem;
+    }
+
+    /* ==========================================================================
+   Hero Landing
+   ========================================================================== */
+    .hero-section {
+        width: 100%;
+        min-height: 550px;
+        height: 700px;
+        background-color: #d1f3f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+
+    .hero {
+        text-align: left;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        padding: 0px 40px;
+        gap: 80px;
+        margin-top: 70px;
+    }
+
+    .hero-title {
+        font-size: 3.2rem;
+    }
+
+
+    .hero-content {
+        flex: 1;
+        text-align: left;
+    }
+
+    .hero-img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        margin-top: 20px;
+        display: flex;
+        margin-inline: auto;
+    }
+
+    .perfiles-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        margin-top: 40px;
+        gap: 40px;
+    }
+
+    /* ==========================================================================
+   Mentores
+   ========================================================================== */
+    .mentores-section {
+        width: 100%;
+        min-height: 400px;
+        height: 450px;
+    }
+
+    .mentores-title {
+        text-align: center;
+        margin-top: 80px;
+        font-size: 2rem;
+        color: #262641;
+    }
+
+    .mentores-description {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 50px;
+        color: #5c5c77;
+    }
+
+    .perfil {
+        background-color: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+        gap: 50px;
+        width: 400px;
+    }
+
+    .perfil-header {
+        display: flex;
+        align-items: center;
+        justify-content: normal;
+        gap: 20px;
+    }
+
+    .rating-content {
+        display: flex;
+        gap: 10px;
+        justify-content: left;
+        height: auto;
+    }
+
+    .txt-rating,
+    .rating-icon {
+        height: 32px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    /* ==========================================================================
+   Recursos Educativos
+   ========================================================================== */
+    .recursos-educativos-section {
+        background-color: #ffffff;
+        width: 100%;
+        padding-bottom: 80px;
+        /* margin-bottom: 50px; */
+    }
+
+    .recursos-title {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 2rem;
+        color: #262641;
+    }
+
+    .recursos-description {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 50px;
+        color: #5c5c77;
+    }
+
+
+
+    .recursos-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        margin-top: 40px;
+        gap: 40px
+    }
+
+    .card {
+        background-color: #eef2f5;
+        border-radius: 24px;
+        align-items: center;
+        /*box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);*/
+        padding: 25px;
+        gap: 50px;
+        width: 320px;
+        text-align: center;
+    }
+
+    .dashboard-container {
+        display: flex;
+        flex-direction: row;
+        background-color: #ffffff;
+        gap: 40px;
+        max-width: 1300px;
+        margin: 50px auto 0 auto;
+        padding-inline: 20px;
+    }
+
+
+    .recursos-populares-box {
+        display: flex;
+        background-color: #eef2f5;
+        border-radius: 24px;
+        padding: 35px;
+        width: 750px;
+        flex-direction: column;
+    }
+
+    .recursos-populares-title {
+        color: #262641;
+        font-size: 24px;
+        margin-top: 40px;
+        text-align: left;
+    }
+
+    .card-popular {
+        background-color: #ffffff;
+        border-radius: 16px;
+        padding: 20px 24px;
+        margin-top: 15px;
+
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        text-align: left;
+    }
+
+    .popular-title {
+        color: #262641;
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin: 0;
+        text-align: left;
+    }
+
+    .popular-description {
+        color: #8c8caa;
+        font-size: 0.85rem;
+        margin: 0;
+        text-align: left;
+    }
+
+    .stats-box {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        width: 480px;
+    }
+
+    .progreso-container {
+        background-color: #f4fafb;
+        border-radius: 24px;
+        padding: 30px;
+    }
+
+    .llamada-accion-description {
+        color: #5c5c77;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 35px;
+        width: 600px;
+        margin-inline: auto;
+    }
+
+    .comenzar-mentores-btn {
+        background-color: #ffffff;
+        display: inline-flex;
+        color: #262641;
+        padding: 16px 30px;
+        border-radius: 16px;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+}
+
+/* End Responsive Table */
+
+
+/* Responsive Desktop */
+@media (min-width: 1024px) {}
