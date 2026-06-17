@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const activeRole =
     typeof CURRENT_USER_ROLE !== "undefined" ? CURRENT_USER_ROLE : "STUDENT";
-  // 1. Carga de Componentes Estáticos Reutilizables (Header y Footer)
+   // 1. Carga de Componentes Estáticos Reutilizables (Header y Footer)
   loadComponent("header-container", "/components/header.html", () => {
     highlightCurrentPage(".nav-link");
   });
@@ -84,7 +84,7 @@ function renderDynamicSidebar(role) {
   if (role === "VOLUNTEER") {
     mainMenuItems = [
       { text: "Dashboard", icon: "📊", url: "/pages/dashboard/dashboard.html" },
-      { text: "Publicar", icon: "📝", url: "/pages/publicar/publicar.html" },
+      { text: "Publicar", icon: "📝", url: "#" },
       { text: "Donaciones", icon: "📈", url: "#" },
       { text: "Logros", icon: "🏆", url: "#", badge: "3" },
       { text: "Certificados", icon: "📜", url: "#" },
@@ -146,6 +146,8 @@ function renderDynamicSidebar(role) {
   // Ejecución inmediata de la iluminación para marcar el ítem del Sidebar que esté activo
   highlightCurrentPage(".sidebar-link");
 }
+
+
 
 /* ==========================================================================
    FLUJO A: VISTA DEL ESTUDIANTE (Estructura Dinámica y Segura)
