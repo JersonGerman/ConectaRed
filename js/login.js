@@ -19,8 +19,15 @@ loginForm.addEventListener("submit", (e) => {
 
         localStorage.setItem("loggedUser", email);
 
-        window.location.href =
+        const usersData = JSON.parse(localStorage.getItem('usersData')) || [];
+        if (usersData.some(user => user["registro-correo"] === email && user["registro-rol"] === "beneficiario")) {
+            window.location.href =
+            "../../4. Aula virtual/index.html";
+        }else{
+            window.location.href =
             "../../pages/dashboard/dashboard.html";
+        }
+        
     } else {
         errorMessage.textContent =
             "Correo o contraseña incorrectos";
