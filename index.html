@@ -9,20 +9,9 @@
 </head>
 
 <body>
-    <header class="landing-header">
-        <div class="header-brand">
-            <img src="images/logo-conectared.png" alt="Logo ConectaRed" class="logo" />
-            <span class="logo-text">Conecta<span class="logo-highlight">Red</span></span>
-        </div>
+    
+    <div id="header-landing-container"></div>
 
-        <nav class="header-nav">
-            <a href="#seccion-hero" class="nav-link">Inicio</a>
-            <a href="#seccion-mentores" class="nav-link">Mentores</a>
-            <a href="#seccion-recursos-educativos" class="nav-link">Recursos</a>
-            <a href="#seccion-llamada-accion" class="nav-link">Comunidad</a>
-            <a href="pages/auth/register/register.html" class="nav-link unete-btn">Únete</a>
-        </nav>
-    </header>
     <main>
         <!-- Hero -->
         <section class="hero-section" id="seccion-hero">
@@ -102,150 +91,7 @@
 
         <!-- Recursos Educativos -->
         <section class="recursos-educativos-section" id="seccion-recursos-educativos">
-            <div class="recursos">
-                <h1 class="recursos-title">Recursos Educativos</h1>
-                <p class="recursos-description">Accede a materiales de estudio
-                    gratuitos y de calidad
-                </p>
-                <div class="recursos-content">
-                    <div class="card">
-                        <div class="card-info">
-                            <div class="icon-circle">
-                                <img src="images/libro.png" alt="libro recursos" class="card-icon">
-                            </div>
-                        <h3 class="card-title">Libros Digitales</h3>
-                        <h4 class="card-description">Biblioteca digital con más de 500 libros</h4>
-                        <h5 class="card-number">250+ recursos</h5>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-info">
-                            <div class="icon-circle" style="background-color: #b5e7a2">
-                                <img src="images/camara.png" alt="camara recursos" class="card-icon" style="height: 24px;">
-                            </div>
-                        <h3 class="card-title">Videos</h3>
-                        <h4 class="card-description">Clases grabadas y tutoriales</h4>
-                        <h5 class="card-number" style="color: #b5e7a2">180+ videos</h5>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="card-info">
-                            <div class="icon-circle" style="background-color: #efe88f">
-                                <img src="images/pieza.png" alt="pieza recursos" class="card-icon" style="height: 24px;">
-                            </div>
-                        <h3 class="card-title">Ejercicios</h3>
-                        <h4 class="card-description">Práctica interactiva por materia</h4>
-                        <h5 class="card-number" style="color: #efe88f">300+ ejercicios</h5>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-info">
-                            <div class="icon-circle" style="background-color: #262641">
-                                <img src="images/asterisco.png" alt="asterisco recursos" class="card-icon" style="height: 24px;">
-                            </div>
-                        <h3 class="card-title">Certificados</h3>
-                        <h4 class="card-description">Reconocimiento por logros</h4>
-                        <h5 class="card-number" style="color: #262641">50+ cursos</h5>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="dashboard-container">
-                    <div class="recursos-populares-box">
-                        <h3 class="recursos-populares-title">Recursos Populares</h3>
-                        
-                        <div class="card-popular">
-                            <div class="popular-icon-circle  bg-popular-mate">
-                                <img src="images/calculadora.png" alt="calculadora icono" class="popular-icon">
-                            </div>
-                            <div class="card-popular-info">
-                                <h4 class="popular-title">Matemáticas Básicas</h4>
-                                <p class="popular-description">Fundamentos de álgebra y geometría</p>
-                            </div>
-                            <div class="card-popular-stats">
-                                <span class="popular-time">45min</span>
-                                <span class="popular-rating">⭐ 4.8</span>
-                            </div>
-                        </div>
-
-                        <div class="card-popular">
-                            <div class="popular-icon-circle  bg-popular-quimica">
-                                <img src="images/atomo.png" alt="atomo icono" class="popular-icon">
-                            </div>
-                            <div class="card-popular-info">
-                                <h4 class="popular-title">Química Orgánica</h4>
-                                <p class="popular-description">Conceptos básicos de química orgánica</p>
-                            </div>
-                            <div class="card-popular-stats">
-                                <span class="popular-time">60 min</span>
-                                <span class="popular-rating">⭐ 4.9</span>
-                            </div>
-                        </div>
-
-                        <div class="card-popular">
-                            <div class="popular-icon-circle  bg-popular-historia">
-                                <img src="images/mundo.png" alt="calculadora icono" class="popular-icon">
-                            </div>
-                            <div class="card-popular-info">
-                                <h4 class="popular-title">Historial del Perú</h4>
-                                <p class="popular-description">Desde el imperio inca hasta la actualidad</p>
-                            </div>
-                            <div class="card-popular-stats">
-                                <span class="popular-time">90 min</span>
-                                <span class="popular-rating">⭐ 4.7</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="stats-box">
-                        <div class="progreso-container">
-                            <h3 class="progreso-title">Tu progreso</h3>
-                            <div class="progreso-item">
-                                <div class="progreso-info">
-                                    <span class="materia-name">Matemáticas</span>
-                                    <span class="materia-porcentaje">75%</span>
-                                </div>
-                                <div class="barra-riel">
-                                    <div class="barra-relleno bg-progreso-mate" style="width: 75%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="progreso-item">
-                                <div class="progreso-info">
-                                    <span class="materia-name">Historia</span>
-                                    <span class="materia-porcentaje">60%</span>
-                                </div>
-                                <div class="barra-riel">
-                                    <div class="barra-relleno bg-progreso-historia" style="width: 60%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="progreso-item">
-                                <div class="progreso-info">
-                                    <span class="materia-name">Ciencias</span>
-                                    <span class="materia-porcentaje">45%</span>
-                                </div>
-                                <div class="barra-riel">
-                                    <div class="barra-relleno bg-progreso-ciencias" style="width: 45%;"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="felicitaciones-card">
-                            <div class="trofeo-icon">
-                                <img src="images/copa.png" alt="trofeo-icon" class="popular-icon" style="height: 35px; width: auto;">
-                            </div>
-                            <h4 class="felicitaciones-title">¡Felicitaciones!</h4>
-                            <p class="felicitaciones-text">Has completado 5 cursos este mes</p>
-                            <button class="ver-logros-btn">Ver logros</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
         </section>
 
         <!-- Llamada Accion -->
