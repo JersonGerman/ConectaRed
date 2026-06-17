@@ -4,19 +4,20 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const activeRole =
-    typeof CURRENT_USER_ROLE !== "undefined" ? CURRENT_USER_ROLE : "STUDENT";
+    typeof CURRENT_USER_ROLE !== "undefined"
+      ? CURRENT_USER_ROLE
+      : "STUDENT";
 
-  // 1. Carga de Componentes Estáticos Reutilizables (Header y Footer)
   loadComponent("header-container", "/components/header.html", () => {
     highlightCurrentPage(".nav-link");
   });
 
   loadComponent("footer-container", "/components/footer.html");
 
-  // Ejecutar la carga de los componentes bases instalados en el DOM
-  loadComponent("header-container", "components/header.html");
-  loadComponent("footer-container", "components/footer.html");
-  loadComponent("header-landing-container", "components/header-landing.html");
+  loadComponent(
+    "header-landing-container",
+    "../../components/header-landing.html"
+  );
 });
 
 
@@ -60,11 +61,15 @@ const highlightCurrentPage = (selector) => {
 
 //scroll para mostrar menú 
 let lastScrollTop = 0;
-const header = document.querySelector('.landing-header');
+let header = null;
 
 window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
+    if (!header) {
+        header = document.querySelector('.landing-header');
+        if (!header) return;
+    }
     // Si el usuario baja más de 70px (el tamaño del header)
     if (scrollTop > 70) {
         if (scrollTop > lastScrollTop) {
