@@ -133,7 +133,7 @@ function renderDynamicSidebar(role) {
                         </a>
                     </li>
                     <li>
-                        <a href="../../" class="sidebar-link logout">
+                        <a href="#" class="sidebar-link logout">
                             <span class="sidebar-icon-placeholder">🚪</span>
                             <span class="sidebar-text" style="color: #e53e3e;">Cerrar Sesion</span>
                         </a>
