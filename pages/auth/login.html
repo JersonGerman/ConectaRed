@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +13,33 @@
 <body>
 
     <!-- HEADER -->
-    <div id="header-landing-container"></div>
+    <header class="landing-header">
+
+        <div class="header-brand">
+            <img src="../../images/logo-conectared.png" alt="Logo ConectaRed" class="logo">
+
+            <span class="logo-text">
+                Conecta<span class="logo-highlight">Red</span>
+            </span>
+        </div>
+
+        <nav class="header-nav">
+            <a href="#seccion-hero" class="nav-link">Inicio</a>
+            <a href="#seccion-mentores" class="nav-link">Mentores</a>
+            <a href="#seccion-recursos-educativos" class="nav-link">Recursos</a>
+        </nav>
+
+        <div class="header-actions">
+            <a href="/pages/login/login.html" class="btn-login">
+                Iniciar sesión
+            </a>
+
+            <a href="./register/register.html" class="btn-unete">
+                Únete
+            </a>
+        </div>
+
+    </header>
 
 
     <!-- LOGIN -->
@@ -24,20 +51,12 @@
 
             <div class="input-group">
                 <label>Correo electrónico</label>
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="correo@conectared.com"
-                    required>
+                <input type="email" id="email" placeholder="correo@conectared.com" required>
             </div>
 
             <div class="input-group">
                 <label>Contraseña</label>
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="********"
-                    required>
+                <input type="password" id="password" placeholder="********" required>
             </div>
 
             <div class="forgot-password">
@@ -45,8 +64,8 @@
                     ¿Olvidaste tu contraseña?
                 </a>
                 <p class="register-link">
-                ¿No tienes cuenta?
-                <a href="#">Regístrate aquí</a>
+                    ¿No tienes cuenta?
+                    <a href="./register/register.html">Regístrate aquí</a>
                 </p>
             </div>
 
@@ -66,4 +85,5 @@
     <script src="../../js/login.js"></script>
 
 </body>
+
 </html>

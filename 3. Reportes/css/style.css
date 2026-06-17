@@ -1,0 +1,499 @@
+/* ============================================================
+   ConectaRed — Style.css Unificado (Registro, Muro y Reportes)
+   ============================================================ */
+
+:root {
+  --registro-dark:        #262641;
+  --registro-teal:        #8cdfde;
+  --registro-teal-hover:  #72d4d3;
+  --registro-muted:       #5c5c77;
+  --registro-placeholder: #9ca3af;
+  --registro-border:      #eef2f5;
+  --registro-input-bg:    #fafcfe;
+  --registro-white:       #ffffff;
+  --registro-page-bg:     #fafcfe;
+  --registro-error:       #ef4444;
+  --registro-shadow-card: 0 10px 30px rgba(38, 38, 65, 0.05);
+  --registro-shadow-btn:  0 4px 12px -2px rgba(0, 0, 0, 0.08);
+  --registro-radius-card: 24px;
+  --registro-radius-input:16px;
+  --registro-radius-btn:  12px;
+  --registro-font:        'Inter', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--registro-font);
+  background: var(--registro-page-bg);
+  color: var(--registro-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { text-decoration: none; }
+button { cursor: pointer; background: none; border: none; font-family: inherit; }
+
+/* ── INTERFAZ DE DASHBOARD GENERAL ───────────────────────── */
+.muro-app-wrapper,
+.mensajeria-app-wrapper {
+  display: flex;
+  flex: 1;
+}
+
+/* --- SIDEBAR --- */
+.muro-sidebar,
+.mensajeria-sidebar {
+  width: 260px;
+  background: var(--registro-white);
+  border-right: 1px solid var(--registro-border);
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.sidebar-logo-mark {
+  width: 36px;
+  height: 36px;
+}
+
+.sidebar-brand-text {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--registro-dark);
+  letter-spacing: -0.5px;
+}
+
+.sidebar-menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--registro-placeholder);
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  padding-left: 12px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: var(--registro-muted);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: var(--registro-radius-btn);
+  transition: all 0.2s;
+}
+
+.sidebar-link:hover {
+  background: rgba(140, 223, 222, 0.08);
+  color: var(--registro-dark);
+}
+
+.sidebar-link.active {
+  background: rgba(140, 223, 222, 0.15);
+  color: #0d9488;
+  font-weight: 600;
+}
+
+.sidebar-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* --- TOP NAVBAR --- */
+.muro-navbar,
+.mensajeria-navbar {
+  background: var(--registro-white);
+  height: 81px;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--registro-border);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 32px;
+}
+
+.navbar-links a {
+  color: var(--registro-muted);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.navbar-profile .mentor-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* --- MENSAJERÍA CONTENT COMPONENT ──────────────────────── */
+.mensajeria-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.mensajeria-content-body {
+  padding: 48px;
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.mensajeria-title-area {
+  margin-bottom: 40px;
+}
+
+.mensajeria-main-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--registro-dark);
+  margin-bottom: 4px;
+}
+
+.mensajeria-main-subtitle {
+  font-size: 15px;
+  color: var(--registro-muted);
+}
+
+/* Distribución de la cuadrícula */
+.mensajeria-grid-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* --- TARJETA REPORTE CONTENEDOR --- */
+.mensajeria-card-reporte {
+  background: var(--registro-white);
+  border: 1px solid var(--registro-border);
+  border-radius: var(--registro-radius-card);
+  padding: 36px;
+  box-shadow: var(--registro-shadow-card);
+}
+
+.reporte-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.reporte-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--registro-dark);
+}
+
+.reporte-icon-sub {
+  color: var(--registro-placeholder);
+}
+
+.mensajeria-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.mensajeria-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--registro-dark);
+  padding-left: 2px;
+}
+
+.mensajeria-select-wrap {
+  position: relative;
+}
+
+.mensajeria-select {
+  appearance: none;
+  background: var(--registro-input-bg);
+  height: 52px;
+  width: 100%;
+  border-radius: var(--registro-radius-input);
+  border: 1px solid var(--registro-border);
+  padding: 0 20px;
+  font-size: 15px;
+  color: var(--registro-dark);
+  outline: none;
+  cursor: pointer;
+}
+
+/* Flecha decorativa del select */
+.mensajeria-select-wrap::after {
+  content: '▾';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--registro-placeholder);
+  pointer-events: none;
+  font-size: 16px;
+}
+
+.mensajeria-textarea {
+  background: var(--registro-input-bg);
+  width: 100%;
+  height: 140px;
+  border-radius: var(--registro-radius-input);
+  border: 1px solid var(--registro-border);
+  padding: 16px 20px;
+  font-size: 15px;
+  color: var(--registro-dark);
+  outline: none;
+  resize: none;
+  font-family: inherit;
+}
+
+.mensajeria-textarea::placeholder {
+  color: var(--registro-placeholder);
+}
+
+.mensajeria-textarea:focus,
+.mensajeria-select:focus {
+  border-color: var(--registro-teal);
+}
+
+/* Botones de acción */
+.reporte-action-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.mensajeria-btn-cancelar {
+  flex: 1;
+  height: 52px;
+  background: #f1f5f9;
+  color: #475569;
+  border-radius: var(--registro-radius-input);
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.mensajeria-btn-cancelar:hover {
+  background: #e2e8f0;
+}
+
+.mensajeria-btn-enviar {
+  flex: 1;
+  height: 52px;
+  background: #f87171;
+  color: var(--registro-white);
+  border-radius: var(--registro-radius-input);
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: var(--registro-shadow-btn);
+  transition: background 0.2s;
+}
+
+.mensajeria-btn-enviar:hover {
+  background: #ef4444;
+}
+
+/* --- SIDEBAR ALERTAS COLUMNA DERECHA --- */
+.mensajeria-sidebar-alertas {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Alerta de Éxito */
+.mensajeria-alert-success {
+  background: var(--registro-white);
+  border: 1px solid #bbf7d0;
+  border-radius: var(--registro-radius-card);
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  box-shadow: var(--registro-shadow-card);
+}
+
+.alert-success-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.alert-success-content h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #166534;
+  margin-bottom: 6px;
+}
+
+.alert-success-content p {
+  font-size: 13.5px;
+  color: #166534;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+/* Caja de Políticas */
+.mensajeria-card-politica {
+  background: #262641;
+  border-radius: var(--registro-radius-card);
+  padding: 32px;
+  color: var(--registro-white);
+  box-shadow: var(--registro-shadow-card);
+}
+
+.mensajeria-card-politica h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.mensajeria-card-politica p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin-bottom: 24px;
+}
+
+.politica-link {
+  color: var(--registro-teal);
+  font-size: 13.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.politica-link:hover {
+  text-decoration: underline;
+}
+
+/* ── BARRA INFERIOR GLOBAL (FOOTER) ─────────────────────── */
+.registro-footer {
+  background: var(--registro-dark);
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.registro-footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px 48px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.registro-footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  gap: 40px;
+}
+
+.registro-footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 400px;
+}
+
+.registro-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.registro-footer-logo span {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--registro-white);
+}
+
+.registro-footer-desc {
+  font-size: 14px;
+  color: #d1d5db;
+  line-height: 1.5;
+}
+
+.registro-footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.registro-social-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  transition: background 0.2s;
+}
+
+.registro-social-btn:hover { 
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.registro-social-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.registro-footer-cols {
+  display: flex;
+  gap: 60px;
+}
+
+.registro-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.registro-footer-col h4 {
+  font-size: 15px;
+  color: var(--registro-white);
+  margin-bottom: 4px;
+}
+
+.registro-footer-col a {
+  font-size: 14px;
+  color: #d1d5db;
+}
+
+.registro-footer-copy {
+  font-size: 14px;
+  color: var(--registro-placeholder);
+  text-align: center;
+}
