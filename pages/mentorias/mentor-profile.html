@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualización - ConectaRed</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="mentor-profile.css">
+</head>
+<body>
+
+    <header class="landing-header">
+        <div class="header-brand">
+            <img src="../../images/logo-conectared.png" alt="Logo ConectaRed" class="logo">
+            <span class="logo-text">Conecta<span class="logo-highlight">Red</span></span>
+        </div>
+        <nav class="header-nav">
+            <a href="../../index.html" class="nav-link">Inicio</a>
+            <a href="#" class="nav-link active">Mentores</a>
+            <a href="#" class="nav-link">Recursos</a>
+            <a href="#" class="nav-link">Comunidad</a>
+            <a href="#" class="nav-link unete-btn">Únete</a>
+        </nav>
+    </header>
+
+    <div class="demo-bar">
+        <span class="demo-label">Escenario US06:</span>
+        <button class="demo-btn active" onclick="setScenario('verified')">✓ Éxito — Verificado</button>
+        <button class="demo-btn" onclick="setScenario('pending')">⚠ Error — Pendiente</button>
+        <button class="demo-btn" onclick="setScenario('graduate')">🎓 Alternativo — Egresado</button>
+    </div>
+
+    <main class="main-content-wrapper">
+        <div class="mentor-profile-container">
+
+            <div class="mentor-header">
+                <div class="mentor-avatar-box">
+                    <img id="mentor-avatar" src="../../images/perfil1.png" alt="Foto del Mentor" class="mentor-avatar">
+                </div>
+
+                <div class="mentor-header-info">
+                    <div class="mentor-name-row">
+                        <h2 class="mentor-name" id="mentor-name">Ing. Carlos Mendoza</h2>
+
+                        <span class="badge badge-verified" id="badge-verified">
+                            <span class="badge-icon">✓</span> Identidad Verificada
+                        </span>
+
+                    </div>
+
+                    <p class="mentor-degree" id="mentor-degree">Magíster en Ciencia de la Computación</p>
+
+                    <p class="mentor-location" id="mentor-location">
+                        <span class="icon-loc">🏫</span>
+                        <span id="location-text">Facultad de Ingeniería de Sistemas</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="mentor-warning-banner hidden" id="warning-banner">
+                <span class="warning-icon">⚠️</span>
+                <p class="warning-text">Mentor pendiente de validación — aún no ha subido su carné o documento oficial.</p>
+            </div>
+
+            <div class="mentor-body-content">
+                <h4 class="section-subtitle">Sobre mí</h4>
+                <p class="mentor-bio" id="mentor-bio">
+                    Apasionado por el desarrollo de software y la optimización de algoritmos.
+                    Listo para guiarte en tus proyectos académicos, laboratorios y preparación para exámenes de cálculo, estructuras de datos y sistemas operativos.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-text">Conecta<span class="logo-highlight">Red</span></span>
+                </div>
+                <p class="footer-description">Conectando estudiantes con oportunidades educativas en todo el Perú.</p>
+            </div>
+            <div class="footer-links-group">
+                <h4 class="footer-title">Plataforma</h4>
+                <ul class="footer-list">
+                    <li><a href="#">Buscar Mentores</a></li>
+                    <li><a href="#">Recursos</a></li>
+                    <li><a href="#">Comunidad</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-group">
+                <h4 class="footer-title">Soporte</h4>
+                <ul class="footer-list">
+                    <li><a href="#">Centro de Ayuda</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-socials">
+                <h4 class="footer-title">Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="Facebook"><span>FB</span></a>
+                    <a href="#" class="social-icon" aria-label="Twitter"><span>TW</span></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><span>IG</span></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="mentor-profile.js"></script>
+</body>
+</html>
