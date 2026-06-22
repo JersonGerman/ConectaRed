@@ -12,18 +12,17 @@ html {
     justify-content: space-between;
     align-items: center;
     background-color: #ffffff;
-    padding: 0 24px;
+    padding: 0 10px;
     height: 80px;
     box-shadow: var(--sombra);
     border-bottom: 1px solid var(--color-accent);
 
-    gap: 10px;
+    width: 100%;
     /*para scroll menu*/
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
-    transition: transform 0.3 ease;
 }
 
 .landing-header.scroll-down {
@@ -55,7 +54,6 @@ html {
 .header-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
 .header-brand .logo {
@@ -69,15 +67,17 @@ html {
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 5px;
 }
 
 .btn-login {
-    color: #262641;
     font-weight: 600;
-    padding: 10px 18px;
+    padding: 10px 10px;
     border-radius: 8px;
     transition: 0.3s;
+    border: 1px solid #8cdfde;
+    color: #5eb0af;
+    text-align: center;
 }
 
 .btn-login:hover {
@@ -122,7 +122,7 @@ html {
 
 /* Contenedor de los enlaces */
 .header-nav {
-    display: flex;
+    display: none;
     align-items: center;
     gap: var(--space-md);
 
@@ -229,6 +229,13 @@ html {
     font-family: var(--font-family-heading);
     font-weight: 700;
     font-size: 1.12rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    line-height: 20px;
+    inline-size: min-content;
+    display: none;
+
 }
 
 .logo-highlight {
@@ -320,6 +327,7 @@ html {
     align-items: center;
     padding: 0 24px;
     margin-top: 80px;
+    position: relative;
 }
 
 
@@ -872,6 +880,9 @@ html {
 
 /* Responsive Table */
 @media (min-width: 768px) {
+    main{
+        width: 100%;
+    }
     .landing-header {
         display: flex;
         justify-content: space-between;
@@ -893,11 +904,10 @@ html {
         display: flex;
         align-items: center;
         gap: 10px;
-        margin-left: 165px;
     }
 
     .header-nav {
-        display: flex;
+        display: none;
         align-items: center;
         gap: var(--space-md);
         margin-left: auto;
@@ -917,10 +927,27 @@ html {
 
     }
 
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .btn-login {
+        font-weight: 600;
+        padding: 10px 18px;
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
     .logo-text {
         font-family: var(--font-family-heading);
         font-weight: 700;
         font-size: 1.25rem;
+        display: block;
+        justify-content: baseline;
+        line-height: normal;
+        display: block;
     }
 
     /* ==========================================================================
@@ -938,15 +965,12 @@ html {
     }
 
     .hero {
-        text-align: left;
-        display: flex;
         flex-direction: row;
-        align-items: center;
         justify-content: space-between;
         max-width: 1200px;
-        padding: 0px 40px;
-        gap: 80px;
+        padding: 0px;
         margin-top: 70px;
+        gap: 0;
     }
 
     .hero-title {
@@ -961,7 +985,7 @@ html {
 
     .hero-img {
         width: 100%;
-        max-width: 600px;
+        max-width: 400px;
         height: auto;
         margin-top: 20px;
         display: flex;
