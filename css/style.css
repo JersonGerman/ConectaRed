@@ -49,6 +49,7 @@ html {
 
 .header-nav .nav-link {
     display: none;
+
 }
 
 .header-brand {
@@ -880,9 +881,10 @@ html {
 
 /* Responsive Table */
 @media (min-width: 768px) {
-    main{
+    main {
         width: 100%;
     }
+
     .landing-header {
         display: flex;
         justify-content: space-between;
@@ -1194,4 +1196,13 @@ html {
 
 
 /* Responsive Desktop */
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+
+    .header-nav {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        margin-left: auto;
+        margin-right: var(--space-xl);
+    }
+}

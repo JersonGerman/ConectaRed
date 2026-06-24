@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentores Validados - ConectaRed</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="mentores.css">
+</head>
+<body>
+
+    <main class="mentores-page-main">
+
+        <!-- HERO / TÍTULO DE SECCIÓN -->
+        <section class="mentores-hero-section">
+            <div class="mentores-hero-content">
+                <h1 class="mentores-hero-title">
+                    Mentores <span class="txt-primary">Validados</span>
+                </h1>
+                <p class="mentores-hero-description">
+                    Conecta con voluntarios verificados por ConectaRed. Todos nuestros mentores han confirmado su identidad y grado académico.
+                </p>
+            </div>
+        </section>
+
+        <!-- BARRA DE BÚSQUEDA Y FILTROS -->
+        <section class="filtros-section">
+            <div class="filtros-container">
+
+                <!-- Búsqueda -->
+                <div class="search-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input
+                        type="text"
+                        id="buscador"
+                        class="search-input"
+                        placeholder="Buscar por nombre o área..."
+                        oninput="filtrarMentores()"
+                    >
+                </div>
+
+                <!-- Filtros por área -->
+                <div class="filtros-pills">
+                    <button class="pill active" onclick="setFiltro('todos', this)">Todos</button>
+                    <button class="pill" onclick="setFiltro('ingenieria', this)">Ingeniería</button>
+                    <button class="pill" onclick="setFiltro('ciencias', this)">Ciencias</button>
+                    <button class="pill" onclick="setFiltro('humanidades', this)">Humanidades</button>
+                    <button class="pill" onclick="setFiltro('economia', this)">Economía</button>
+                    <button class="pill" onclick="setFiltro('comunicaciones', this)">Comunicaciones</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- GRID DE MENTORES -->
+        <section class="mentores-grid-section">
+            <div class="mentores-grid" id="mentores-grid">
+
+                <!-- CARD 1 — Verificado, estudiante de posgrado -->
+                <article class="mentor-card" data-area="ingenieria" data-nombre="carlos mendoza ingeniería sistemas">
+                    <div class="mentor-card-header">
+                        <img src="../../images/perfil1.png" alt="Carlos Mendoza" class="mentor-card-avatar">
+                        <div class="mentor-card-meta">
+                            <div class="mentor-card-name-row">
+                                <h3 class="mentor-card-name">Ing. Carlos Mendoza</h3>
+                                <span class="badge-mini badge-verified-mini">✓ Verificado</span>
+                            </div>
+                            <p class="mentor-card-area">Ingeniería de Sistemas</p>
+                            <div class="mentor-card-rating">
+                                <img src="../../images/estrellas.png" alt="estrellas" class="rating-stars-img">
+                                <span class="rating-val">5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mentor-card-location"><span class="loc-icon">🏫</span> Facultad de Ingeniería — UNMSM</p>
+                    <p class="mentor-card-desc">Especialista en algoritmos, estructuras de datos y proyectos académicos de software.</p>
+                    <div class="mentor-card-tags">
+                        <span class="tag">Algoritmos</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">C++</span>
+                    </div>
+                    <a href="mentor-profile.html" class="btn-ver-perfil">Ver perfil</a>
+                </article>
+
+                <!-- CARD 2 — Verificado, profesional egresada -->
+                <article class="mentor-card" data-area="ciencias" data-nombre="maría gonzález matemáticas física">
+                    <div class="mentor-card-header">
+                        <img src="../../images/perfil2.png" alt="María González" class="mentor-card-avatar">
+                        <div class="mentor-card-meta">
+                            <div class="mentor-card-name-row">
+                                <h3 class="mentor-card-name">Dra. María González</h3>
+                                <span class="badge-mini badge-verified-mini">✓ Verificado</span>
+                            </div>
+                            <p class="mentor-card-area">Matemáticas & Física</p>
+                            <div class="mentor-card-rating">
+                                <img src="../../images/estrellas.png" alt="estrellas" class="rating-stars-img">
+                                <span class="rating-val">4.9</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mentor-card-location"><span class="loc-icon">🏢</span> Instituto de Investigación Científica del Perú</p>
+                    <p class="mentor-card-desc">Investigadora con 8 años de experiencia. Especialidad en cálculo diferencial, física cuántica y preparación universitaria.</p>
+                    <div class="mentor-card-tags">
+                        <span class="tag">Cálculo</span>
+                        <span class="tag">Física</span>
+                        <span class="tag">Estadística</span>
+                    </div>
+                    <a href="mentor-profile.html" class="btn-ver-perfil">Ver perfil</a>
+                </article>
+
+                <!-- CARD 3 — Verificado, egresado -->
+                <article class="mentor-card" data-area="economia" data-nombre="andrés quispe economía">
+                    <div class="mentor-card-header">
+                        <img src="../../images/perfil3.png" alt="Andrés Quispe" class="mentor-card-avatar">
+                        <div class="mentor-card-meta">
+                            <div class="mentor-card-name-row">
+                                <h3 class="mentor-card-name">Dr. Andrés Quispe</h3>
+                                <span class="badge-mini badge-verified-mini">✓ Verificado</span>
+                            </div>
+                            <p class="mentor-card-area">Economía</p>
+                            <div class="mentor-card-rating">
+                                <img src="../../images/estrellas.png" alt="estrellas" class="rating-stars-img">
+                                <span class="rating-val">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mentor-card-location"><span class="loc-icon">🏢</span> Banco Central de Reserva del Perú</p>
+                    <p class="mentor-card-desc">Doctor en Economía con experiencia en política monetaria, macroeconomía y econometría.</p>
+                    <div class="mentor-card-tags">
+                        <span class="tag">Macro</span>
+                        <span class="tag">Econometría</span>
+                        <span class="tag">Finanzas</span>
+                    </div>
+                    <a href="mentor-profile.html" class="btn-ver-perfil">Ver perfil</a>
+                </article>
+
+                <!-- CARD 4 — Verificado -->
+                <article class="mentor-card" data-area="humanidades" data-nombre="ana rodríguez historia literatura humanidades">
+                    <div class="mentor-card-header">
+                        <img src="../../images/perfil1.png" alt="Ana Rodríguez" class="mentor-card-avatar">
+                        <div class="mentor-card-meta">
+                            <div class="mentor-card-name-row">
+                                <h3 class="mentor-card-name">Lic. Ana Rodríguez</h3>
+                                <span class="badge-mini badge-verified-mini">✓ Verificado</span>
+                            </div>
+                            <p class="mentor-card-area">Historia & Literatura</p>
+                            <div class="mentor-card-rating">
+                                <img src="../../images/estrellas.png" alt="estrellas" class="rating-stars-img">
+                                <span class="rating-val">4.7</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mentor-card-location"><span class="loc-icon">🏫</span> Facultad de Letras — PUCP</p>
+                    <p class="mentor-card-desc">Profesora universitaria especializada en ciencias sociales, comprensión lectora y redacción académica.</p>
+                    <div class="mentor-card-tags">
+                        <span class="tag">Literatura</span>
+                        <span class="tag">Redacción</span>
+                        <span class="tag">Historia</span>
+                    </div>
+                    <a href="mentor-profile.html" class="btn-ver-perfil">Ver perfil</a>
+                </article>
+
+                <!-- CARD 5 — Verificado -->
+                <article class="mentor-card" data-area="comunicaciones" data-nombre="sofía torres comunicaciones periodismo">
+                    <div class="mentor-card-header">
+                        <img src="../../images/perfil2.png" alt="Sofía Torres" class="mentor-card-avatar">
+                        <div class="mentor-card-meta">
+                            <div class="mentor-card-name-row">
+                                <h3 class="mentor-card-name">Lic. Sofía Torres</h3>
+                                <span class="badge-mini badge-verified-mini">✓ Verificado</span>
+                            </div>
+                            <p class="mentor-card-area">Comunicaciones</p>
+                            <div class="mentor-card-rating">
+                                <img src="../../images/estrellas.png" alt="estrellas" class="rating-stars-img">
+                                <span class="rating-val">4.6</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mentor-card-location"><span class="loc-icon">🏢</span> RPP Noticias — Periodista Senior</p>
+                    <p class="mentor-card-desc">Egresada de Comunicación Social con experiencia en periodismo digital y comunicación estratégica.</p>
+                    <div class="mentor-card-tags">
+                        <span class="tag">Periodismo</span>
+                        <span class="tag">Comunicación</span>
+                        <span class="tag">Redacción</span>
+                    </div>
+                    <a href="mentor-profile.html" class="btn-ver-perfil">Ver perfil</a>
+                </article>
+
+                <!-- CARD 6 — Verificado -->
+                <article class="mentor-card" data-area="ciencias" data-nombre="roberto silva biología química ciencias">
+                    <div class="mentor-card-header">
+                        <img src="../../images/perfil3.png" alt="Roberto Silva" class="mentor-card-avatar">
+                        <div class="mentor-card-meta">
+                            <div class="mentor-card-name-row">
+                                <h3 class="mentor-card-name">Dr. Roberto Silva</h3>
+                                <span class="badge-mini badge-verified-mini">✓ Verificado</span>
+                            </div>
+                            <p class="mentor-card-area">Biología & Química</p>
+                            <div class="mentor-card-rating">
+                                <img src="../../images/estrellas.png" alt="estrellas" class="rating-stars-img">
+                                <span class="rating-val">4.9</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mentor-card-location"><span class="loc-icon">🏫</span> Facultad de Ciencias Biológicas — UNMSM</p>
+                    <p class="mentor-card-desc">Médico-biólogo con pasión por la enseñanza de química orgánica, biología celular y preparación para exámenes de admisión.</p>
+                    <div class="mentor-card-tags">
+                        <span class="tag">Biología</span>
+                        <span class="tag">Química</span>
+                        <span class="tag">Admisión</span>
+                    </div>
+                    <a href="mentor-profile.html" class="btn-ver-perfil">Ver perfil</a>
+                </article>
+
+            </div>
+
+            <!-- Estado vacío -->
+            <div class="empty-state hidden" id="empty-state">
+                <p class="empty-icon">🔍</p>
+                <p class="empty-title">No se encontraron mentores</p>
+                <p class="empty-desc">Intenta con otro término o área de búsqueda.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (mismo del proyecto) -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-text">Conecta<span class="logo-highlight">Red</span></span>
+                </div>
+                <p class="footer-description">Conectando estudiantes con oportunidades educativas en todo el Perú.</p>
+            </div>
+            <div class="footer-links-group">
+                <h4 class="footer-title">Plataforma</h4>
+                <ul class="footer-list">
+                    <li><a href="#">Buscar Mentores</a></li>
+                    <li><a href="#">Recursos</a></li>
+                    <li><a href="#">Comunidad</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-group">
+                <h4 class="footer-title">Soporte</h4>
+                <ul class="footer-list">
+                    <li><a href="#">Centro de Ayuda</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-socials">
+                <h4 class="footer-title">Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="Facebook"><span>FB</span></a>
+                    <a href="#" class="social-icon" aria-label="Twitter"><span>TW</span></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><span>IG</span></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="mentores.js"></script>
+</body>
+</html>

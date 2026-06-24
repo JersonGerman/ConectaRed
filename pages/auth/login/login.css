@@ -1,82 +1,87 @@
 @import "../../css/base.css";
 @import "../../css/style.css";
 
-.login-container{
+.login-container {
     min-height: calc(100vh - 70px);
     background-color: #dff5f4;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.login-card{
-    width:450px;
-
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-
-    background:white;
-    padding:40px;
-    border-radius:16px;
+.login-card {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
     box-shadow: var(--sombra);
 }
 
-.login-card h1{
-    text-align:center;
+.login-card h1 {
+    text-align: center;
     color: var(--color-dark);
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
 
-.input-group{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.input-group label{
+.input-group label {
     color: var(--color-primary);
-    font-weight:600;
+    font-weight: 600;
 }
 
-.input-group input{
-    padding:16px;
-    border-radius:12px;
-    border:2px solid var(--color-primary);
-    outline:none;
+.input-group input {
+    padding: 16px;
+    border-radius: 12px;
+    border: 2px solid var(--color-primary);
+    outline: none;
 }
 
-.forgot-password{
-    text-align:right;
+.forgot-password {
+    text-align: right;
 }
 
-.forgot-password a{
+.forgot-password a {
     color: var(--color-dark);
-    font-size:14px;
+    font-size: 14px;
 }
 
-.login-btn{
-    border:none;
-    cursor:pointer;
+.login-btn {
+    border: none;
+    cursor: pointer;
 
     background-color: var(--color-primary);
 
-    padding:15px;
+    padding: 15px;
 
-    border-radius:12px;
+    border-radius: 12px;
 
-    font-weight:700;
+    font-weight: 700;
 
     color: var(--color-dark);
 }
 
-.login-btn:hover{
+.login-btn:hover {
     background-color: var(--rojo-oscuro);
 }
 
-#errorMessage{
-    text-align:center;
-    color:red;
-    font-size:14px;
+#errorMessage {
+    text-align: center;
+    color: red;
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    .login-card {
+        padding: 40px;
+        gap: 20px;
+    }
 }
