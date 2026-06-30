@@ -24,7 +24,7 @@ loginForm.addEventListener("submit", (e) => {
             window.location.href = "../../dashboard/beneficiario/aula-virtual/";
         }else{
             window.location.href =
-            "../../dashboard/volundatio/dashboard";
+            "../../dashboard/voluntario/dashboard";
         }
         
     } else {
