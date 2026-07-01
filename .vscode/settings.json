@@ -1,3 +1,4 @@
 {
-    "liveServer.settings.multiRootWorkspaceName": "ConectaRed"
+    "liveServer.settings.multiRootWorkspaceName": "ConectaRed",
+    "liveServer.settings.port": 5501
 }
