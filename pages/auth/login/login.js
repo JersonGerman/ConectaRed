@@ -37,7 +37,7 @@ loginForm.addEventListener("submit", async (e) => {
         if (cuentaError) throw cuentaError;
 
         if (cuenta.rol === 'STUDENT') {
-            window.location.href = "../../dashboard/beneficiario/aula-virtual/";
+            window.location.href = "../../dashboard/beneficiario/aula-virtual/index.html";
         } else {
             window.location.href = "../../dashboard/voluntario/dashboard";
         }

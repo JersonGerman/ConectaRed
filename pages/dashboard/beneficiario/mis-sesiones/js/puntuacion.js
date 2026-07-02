@@ -223,7 +223,7 @@ const sesionesActivas = [
 
 function templateHtmlSesions(sesion) {
 
-  const { title, mentor_raiting, mentorName, mentor_image, mentor_name, mentor_speciality, duration, state, date, button_timer } = sesion;
+  const { title, mentor_raiting, mentor_image, mentor_name, mentor_speciality, duration, state, date, button_timer } = sesion;
 
   let raitingHtml = "";
   for (let index = 0; index < mentor_raiting; index++) {
