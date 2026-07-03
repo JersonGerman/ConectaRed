@@ -1,6 +1,6 @@
 *.pdf
 
 # Credenciales locales de Supabase y entorno
-config.js
+configuration.js
 *.env
 .env
