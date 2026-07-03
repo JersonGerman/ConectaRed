@@ -10,6 +10,9 @@
  *  5. Form validation  (required fields, email format, password match)
  *  6. Success toast    (show on valid submit, dismiss on close)
  */
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from '../../../../js/configuration.js';
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 (function () {
   'use strict';
@@ -399,48 +402,73 @@
   toastClose.addEventListener('click', dismissToast);
 
 
-  /* ── Form submit handlers ───────────────────────────────── */
+  /* ── Form submit handlers (CONEXION CON SUPABASE) ───────────────────────────────── */
 
-  document.getElementById('form-beneficiario').addEventListener('submit', function (e) {
+  // REGISTRO DE BENEFICIARIOS (STUDENT)
+  document.getElementById('form-beneficiario').addEventListener('submit', async function (e) {
     e.preventDefault();
     if (validateBeneficiario()) {
-      showToast('beneficiario');
-      const form = new FormData(this);
-      const data = {};
-      form.forEach((value, key) => {
-        data[key] = value;
-      });
       
-      const usersData = JSON.parse(localStorage.getItem('usersData')) || [];
-      usersData.push(data);
-      localStorage.setItem('usersData', JSON.stringify(usersData));
+      const correo = document.getElementById('ben-correo').value.trim();
+      const password = document.getElementById('ben-password').value;
+      const nombre = document.getElementById('ben-nombre').value.trim();
+
+      try {
+        // registrar en la auth de supabase (el trigger crea la fila en "cuentas")
+        const { data: authData, error: authError } = await supabase.auth.signUp({
+          email: correo,
+          password: password,
+          options: {
+            data: {
+              nombre_completo: nombre,
+              rol: 'STUDENT'
+            }
+          }
+        });
+        
+        if (authError) throw authError;
+
+        showToast('beneficiario');
         this.reset();
+      } catch (error) {
+        console.error('Error en supabase:', error.message);
+        alert('Ocurrió un error al registrar. Por favor, inténtalo de nuevo. ' + error.message);
+      }
     }
   });
 
-  document.getElementById('form-voluntario').addEventListener('submit', function (e) {
+  // REGISTRO DE VOLUNTARIOS (MENTOR) -> ¡CORREGIDO AQUÍ EL ID!
+  document.getElementById('form-voluntario').addEventListener('submit', async function (e) {
     e.preventDefault();
     if (validateVoluntario()) {
-      showToast('voluntario');
-      // Reset file state
-      selectedFile = null;
-      filenameEl.textContent = '';
-      dropzone.classList.remove('has-file', 'is-invalid');
 
-      const form = new FormData(this);
-      const data = {};
-      form.forEach((value, key) => {
-        data[key] = value;
-      });
-      data['documento'] = selectedFile ? selectedFile.name : null; // Store file name for demo  
+      const correo = document.getElementById('vol-correo').value.trim();
+      const password = document.getElementById('vol-password').value;
+      const nombre = document.getElementById('vol-nombre').value.trim();
 
+      try {
+        const { data: authData, error: authError } = await supabase.auth.signUp({
+          email: correo,
+          password: password,
+          options: {
+            data: {
+              nombre_completo: nombre,
+              rol: 'MENTOR'
+            }
+          }
+        });
 
-      const usersData = JSON.parse(localStorage.getItem('usersData')) || [];
-      usersData.push(data);
-      localStorage.setItem('usersData', JSON.stringify(usersData));
-
-      this.reset();
+        if (authError) throw authError;
+        
+        showToast('voluntario');
+        selectedFile = null; 
+        filenameEl.textContent = '';
+        dropzone.classList.remove('has-file', 'is-invalid');
+        this.reset();
+      } catch (error) {
+        console.error('Error en supabase:', error.message);
+        alert('Ocurrió un error al registrar. Por favor, inténtalo de nuevo. ' + error.message);
+      }
     }
   });
-
 })();
