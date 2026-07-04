@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnLimpiarFiltros = document.getElementById("btn-limpiar-filtros");
     const btnResetEmpty = document.getElementById("btn-reset-empty");
 
+    let supabaseClient = null;
+
+
     let formatoSeleccionado = "Todos";
 
     let publishedMaterials = [
@@ -129,7 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ejecutarFiltradoGlobal();
     }
 
-    let supabaseClient = null;
 
     function getSupabaseClient() {
         if (supabaseClient) return supabaseClient;
@@ -178,31 +180,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    getIconForCategory = (category) => {
-        switch (category) {
-            case "Libros":
-                return "📚";
-            case "Guías":
-                return "📝";
-            case "Ejercicios":
-                return "✏️";
-            case "Videos":
-                return "🎥";
-            case "Matematicas":
-                return "🧮";
-            case "Ciencias":
-                return "🔬";
-            case "Lenguaje":
-                return "📖";
-            case "Historia":
-                return "🏺";
-            case "Tecnología":
-                return "💻";
-            default:
-                return "📖";
-        }
-    };
-
+   const materialIcons = {
+    "Libros": "📚",
+    "Guías": "📝",
+    "Ejercicios": "✏️",
+    "Videos": "🎥",
+    "Matematicas": "🧮",
+    "Ciencias": "🔬",
+    "Lenguaje": "📖",
+    "Historia": "🏺",
+    "Tecnología": "💻"
+};
+   const getIconForCategory = (category) => {
+    // Si la categoría existe en el objeto, la devuelve; si no, usa el "fallback" por defecto ("📖")
+    return materialIcons[category] || "📖";
+};
     function renderMaterialsList(materials, container) {
         container.innerHTML = "";
         if (materials.length === 0) {
