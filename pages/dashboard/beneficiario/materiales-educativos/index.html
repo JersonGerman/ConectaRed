@@ -168,6 +168,15 @@
             </div>
           </div>
 
+          <div class="recursos-filtros-resumen">
+            <div class="navbar-search-bar">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="main-search-input" placeholder="Buscar libros, guías, ejercicios..." />
+            </div>
+            <!-- <span id="filtros-resumen-text">Filtros activos: <strong id="filtros-resumen-list">Categoría: Libros, Guías,
+                Ejercicios; Nivel: Secundaria; Materia: Todas; Formato: Todos; Zona: Lima, Cusco...</strong></span> -->
+          </div>
+
           <div class="recursos-grid-layout">
 
             <aside class="recursos-panel-filtros">
@@ -240,6 +249,7 @@
                     <button class="btn-fav" type="button">🖤</button>
                     <div class="libro-cover-placeholder">🧮</div>
                   </div>
+
                   <div class="libro-card-info">
                     <div class="libro-tags"><span class="tag-mat">MATEMÁTICAS</span><span class="tag-formato">Digital
                         (PDF)</span></div>
@@ -513,6 +523,12 @@
       </svg>
     </button>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    window.SUPABASE_URL = "https://sviblsfhersxggcqptfh.supabase.co";
+    window.SUPABASE_ANON_KEY = "sb_publishable_GmUHZfbasiOBPudKKi1r9Q_f01Wycu2";
+  </script>
 
   <script src="js/chatbot.js"></script>
 
