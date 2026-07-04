@@ -135,46 +135,79 @@
       </header>
 
       <main class="aula-content-body">
-        <div class="upload-container">
-          <h1>Publicar Material Didáctico</h1>
-          <p>Compartid vuestros documentos en formato PDF con la comunidad de estudiantes.</p>
-          <div class="upload-grid">
-            <div id="upload-drop-zone" class="upload-drop-zone">
-              <span class="upload-drop-zone-icon">📚</span>
-              <p class="upload-drop-zone-text">
-                Arrastrad aquí vuestros archivos PDF
-              </p>
-              <p class="upload-drop-zone-subtext">
-                o pinchad para examinar vuestro equipo
-              </p>
-              <span class="upload-drop-zone-button">Seleccionar Archivos</span>
-              <input type="file" id="upload-file-input" class="upload-file-input" multiple accept=".pdf" />
+        <div class="materials-shell">
+          <section class="materials-hero">
+            <div>
+              <p class="eyebrow">Gestión de recursos</p>
+              <h1>Materiales didácticos compartidos</h1>
+              <p>Consulta tus recursos publicados y añade nuevos documentos PDF desde una carga rápida y ordenada.</p>
+            </div>
+            <button type="button" id="open-upload-modal-btn" class="materials-action-btn">
+              + Cargar material
+            </button>
+          </section>
+
+          <section class="materials-list-section">
+            <div class="materials-list-header">
+              <div>
+                <h2>Materiales cargados</h2>
+                <p>Revisa los recursos que ya están disponibles para la comunidad.</p>
+              </div>
             </div>
 
-            <div class="publish-queue-card">
-              <h2 class="publish-queue-title">
-                Cola de cargas pendientes
-              </h2>
+            <div id="materials-list" class="materials-list"></div>
+          </section>
+        </div>
 
-              <form id="publish-form" class="publish-form">
-                <ul id="publishing-file-list" class="publishing-file-list">
-                  <li id="no-files-placeholder" class="no-files-placeholder">
-                    No habéis seleccionado ningún documento
-                    aún.
-                  </li>
-                </ul>
+        <div id="upload-modal" class="upload-modal" aria-hidden="true">
+          <div class="upload-modal-backdrop" data-close-modal></div>
+          <div class="upload-modal-panel" role="dialog" aria-modal="true" aria-labelledby="upload-modal-title">
+            <div class="upload-modal-header">
+              <div>
+                <p class="eyebrow">Nuevo material</p>
+                <h2 id="upload-modal-title">Subir materiales didácticos</h2>
+              </div>
+              <button type="button" id="upload-modal-close" class="upload-modal-close" aria-label="Cerrar">×</button>
+            </div>
 
-                <button type="submit" id="btn-submit-all" class="btn-submit-all" disabled>
-                  Publicar Materiales Seleccionados
-                </button>
-              </form>
+            <div class="upload-container upload-modal-container">
+              <div class="upload-grid">
+                <div id="upload-drop-zone" class="upload-drop-zone">
+                  <span class="upload-drop-zone-icon">📚</span>
+                  <p class="upload-drop-zone-text">
+                    Arrastrad aquí vuestros archivos PDF
+                  </p>
+                  <p class="upload-drop-zone-subtext">
+                    o pinchad para examinar vuestro equipo
+                  </p>
+                  <span class="upload-drop-zone-button">Seleccionar Archivos</span>
+                  <input type="file" id="upload-file-input" class="upload-file-input" multiple accept=".pdf" />
+                </div>
+
+                <div class="publish-queue-card">
+                  <h2 class="publish-queue-title">
+                    Cola de cargas pendientes
+                  </h2>
+
+                  <form id="publish-form" class="publish-form">
+                    <ul id="publishing-file-list" class="publishing-file-list">
+                      <li id="no-files-placeholder" class="no-files-placeholder">
+                        No habéis seleccionado ningún documento aún.
+                      </li>
+                    </ul>
+
+                    <button type="submit" id="btn-submit-all" class="btn-submit-all" disabled>
+                      Publicar Materiales Seleccionados
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-    </div>
-    </main>
+      </main>
 
-  </div>
+    </div>
   </div>
 
   <footer class="recursos-footer-master">
@@ -262,9 +295,12 @@
     </button>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    window.SUPABASE_URL = "https://sviblsfhersxggcqptfh.supabase.co";
+    window.SUPABASE_ANON_KEY = "sb_publishable_GmUHZfbasiOBPudKKi1r9Q_f01Wycu2";
+  </script>
   <script src="js/chatbot.js"></script>
-
-
   <script src="js/publicar.js"></script>
 
 </body>
