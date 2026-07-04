@@ -367,7 +367,7 @@ async function renderPublishedMaterials() {
     const supabase = getSupabaseClient();
     const { data, error } = await supabase
       .from("recursos")
-      .select("id, name, description, category, type, path, image_preview")
+      .select("id, name, description, category, type, path, image_preview, created_at")
       .order("id", { ascending: false });
 
     if (error) {
@@ -430,13 +430,29 @@ function renderMaterialsList(materials, list) {
     .join("");
 }
 
+daysOfWeek = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+function getMessageForDate(dateString) {
+  const date = new Date(dateString);
+  const now = new Date();
+  const diffInMs = now - date;  
+  const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+  if (diffInDays < 7) {
+    return `Publicado el ${daysOfWeek[date.getDay()]}`;
+  } else {
+    return `Publicado el ${daysOfWeek[date.getDay()]} ${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  }
+}
+
+
 function mapSupabaseMaterial(record) {
+  // parsear la fecha
+  const date = getMessageForDate(record.created_at || new Date().toISOString());
   return {
     id: record.id,
     title: record.name || "Material sin título",
     name: record.name || "Material sin título",
     tags: record.category || "",
-    status: "Publicado desde Supabase",
+    status: date.toString(),
     size: 0,
     description: record.description || "",
     category: record.category || "",
