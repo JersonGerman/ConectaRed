@@ -284,7 +284,7 @@ async function publishQueuedMaterials() {
     }
 
     publishedMaterials = uploadedMaterials.concat(publishedMaterials);
-    renderPublishedMaterials();
+    await renderPublishedMaterials();
 
     filesToPublish = [];
     const listContainer = document.getElementById("publishing-file-list");
@@ -357,16 +357,42 @@ async function uploadMaterialToSupabase(fileObject) {
   };
 }
 
-function renderPublishedMaterials() {
+async function renderPublishedMaterials() {
   const list = document.getElementById("materials-list");
   if (!list) return;
 
-  if (publishedMaterials.length === 0) {
+  list.innerHTML = '<div class="no-files-placeholder">Cargando materiales...</div>';
+
+  try {
+    const supabase = getSupabaseClient();
+    const { data, error } = await supabase
+      .from("recursos")
+      .select("id, name, description, category, type, path, image_preview")
+      .order("id", { ascending: false });
+
+    if (error) {
+      throw error;
+    }
+
+    const remoteMaterials = (data || []).map(mapSupabaseMaterial);
+    const mergedMaterials = mergeMaterials(publishedMaterials, remoteMaterials);
+    publishedMaterials = mergedMaterials;
+    renderMaterialsList(mergedMaterials, list);
+  } catch (error) {
+    console.error("No se pudieron cargar los materiales desde Supabase:", error);
+    renderMaterialsList(publishedMaterials, list);
+  }
+}
+
+function renderMaterialsList(materials, list) {
+  if (!list) return;
+
+  if (!materials || materials.length === 0) {
     list.innerHTML = '<div class="no-files-placeholder">Todavía no hay materiales publicados.</div>';
     return;
   }
 
-  list.innerHTML = publishedMaterials
+  list.innerHTML = materials
     .map((material) => {
       const tags = material.tags
         ? material.tags
@@ -380,13 +406,15 @@ function renderPublishedMaterials() {
       const typeLabel = material.type === "fisico" ? "Físico" : "Digital";
       const categoryLabel = material.category ? `<p style="font-size: 0.8rem; color: #4a5568; margin-top: 6px;">${escapeHtml(material.category)}</p>` : "";
       const descriptionLabel = material.description ? `<p style="font-size: 0.8rem; color: #718096; margin-top: 6px;">${escapeHtml(material.description)}</p>` : "";
+      const materialName = material.name || material.title || "Material sin título";
+      const materialTitle = material.title || material.name || "Material sin título";
 
       return `
         <article class="material-card">
           <div class="material-card-icon">📄</div>
           <div>
-            <h3>${escapeHtml(material.title)}</h3>
-            <p>${escapeHtml(material.name)}</p>
+            <h3>${escapeHtml(materialTitle)}</h3>
+            <p>${escapeHtml(materialName)}</p>
             <div class="material-card-meta">
               <span>${escapeHtml(material.status || "Publicado")}</span>
               <span>${formatBytes(material.size || 0)}</span>
@@ -400,6 +428,39 @@ function renderPublishedMaterials() {
       `;
     })
     .join("");
+}
+
+function mapSupabaseMaterial(record) {
+  return {
+    id: record.id,
+    title: record.name || "Material sin título",
+    name: record.name || "Material sin título",
+    tags: record.category || "",
+    status: "Publicado desde Supabase",
+    size: 0,
+    description: record.description || "",
+    category: record.category || "",
+    type: record.type || "digital",
+    publicUrl: record.path || record.image_preview || null,
+    path: record.path || null,
+    image_preview: record.image_preview || null,
+  };
+}
+
+function mergeMaterials(localMaterials, remoteMaterials) {
+  const combined = [...(localMaterials || []), ...(remoteMaterials || [])];
+  const uniqueMaterials = [];
+  const seen = new Set();
+
+  combined.forEach((material) => {
+    const key = material.id || `${material.title || ""}-${material.name || ""}-${material.publicUrl || material.path || ""}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      uniqueMaterials.push(material);
+    }
+  });
+
+  return uniqueMaterials;
 }
 
 function formatBytes(bytes) {
