@@ -1,19 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
     const vistaResultados = document.getElementById("vista-resultados");
-    const vistaDetalle    = document.getElementById("vista-detalle");
-    const vistaVacia      = document.getElementById("vista-vacia");
-    const mainSearchInput    = document.getElementById("main-search-input");
-    const btnBackToResults   = document.getElementById("btn-back-to-results");
-    const toggleMegasInput   = document.getElementById("toggle-megas-input");
-    const containerTarjetas  = document.getElementById("contenedor-tarjetas");
+    const vistaDetalle = document.getElementById("vista-detalle");
+    const vistaVacia = document.getElementById("vista-vacia");
+    const mainSearchInput = document.getElementById("main-search-input");
+    const btnBackToResults = document.getElementById("btn-back-to-results");
+    const toggleMegasInput = document.getElementById("toggle-megas-input");
+    const containerTarjetas = document.getElementById("contenedor-tarjetas");
     const checkboxesCategoria = document.querySelectorAll("input[name='categoria']");
-    const selectNivel          = document.getElementById("filter-nivel");
-    const radiosMateria        = document.querySelectorAll("input[name='materia']");
-    const tabsFormato          = document.querySelectorAll("#formato-tab-container .btn-tab");
-    const btnLimpiarFiltros    = document.getElementById("btn-limpiar-filtros");
-    const btnResetEmpty        = document.getElementById("btn-reset-empty");
+    const selectNivel = document.getElementById("filter-nivel");
+    const radiosMateria = document.querySelectorAll("input[name='materia']");
+    const tabsFormato = document.querySelectorAll("#formato-tab-container .btn-tab");
+    const btnLimpiarFiltros = document.getElementById("btn-limpiar-filtros");
+    const btnResetEmpty = document.getElementById("btn-reset-empty");
 
     let formatoSeleccionado = "Todos";
+
+    let publishedMaterials = [
+        {
+            id: 1,
+            title: "Matemáticas para niños",
+            name: "Matemáticas para niños",
+            description: "Un libro de matemáticas para niños de primaria.",
+            category: "Libros",
+            type: "PDF"
+        }
+    ];
+
+    fetchAllTarjetasMateriales();
 
     // CORE DE FILTRADO INTERACTIVO
     function ejecutarFiltradoGlobal() {
@@ -114,6 +127,108 @@ document.addEventListener("DOMContentLoaded", () => {
         vistaVacia.classList.remove("active");
         vistaResultados.classList.add("active");
         ejecutarFiltradoGlobal();
+    }
+
+    let supabaseClient = null;
+
+    function getSupabaseClient() {
+        if (supabaseClient) return supabaseClient;
+
+        if (!window.supabase) {
+            throw new Error("La librería de Supabase no está disponible.");
+        }
+
+        const supabaseUrl = window.SUPABASE_URL || "https://sviblsfhersxggcqptfh.supabase.co";
+        const supabaseAnonKey = window.SUPABASE_ANON_KEY || "sb_publishable_GmUHZfbasiOBPudKKi1r9Q_f01Wycu2";
+        supabaseClient = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+        return supabaseClient;
+    }
+
+
+    function mapSupabaseMaterial(record) {
+        return {
+            id: record.id,
+            title: record.name || "Material sin título",
+            name: record.name || "Material sin título",
+            description: record.description || "Sin descripción",
+            category: record.category || "Sin categoría",
+            type: record.type || "Sin tipo",
+            path: record.path || "#",
+            image_preview: record.image_preview || null,
+        };
+    }
+
+    async function fetchAllTarjetasMateriales() {
+        // obtener de la api de supabase todos los materiales educativos y renderizarlos en el contenedor de tarjetas
+        try {
+            const supabase = getSupabaseClient();
+            const { data, error } = await supabase
+                .from("recursos")
+                .select("id, name, description, category, type, path, image_preview, created_at, cuentas(nombre_completo)")
+                .order("id", { ascending: false });
+
+            if (error) {
+                throw error;
+            }
+            const remoteMaterials = (data || []).map(mapSupabaseMaterial);
+            renderMaterialsList(remoteMaterials, containerTarjetas);
+        } catch (error) {
+            console.error("No se pudieron obtener los materiales desde Supabase:", error);
+        }
+
+    }
+
+    getIconForCategory = (category) => {
+        switch (category) {
+            case "Libros":
+                return "📚";
+            case "Guías":
+                return "📝";
+            case "Ejercicios":
+                return "✏️";
+            case "Videos":
+                return "🎥";
+            case "Matematicas":
+                return "🧮";
+            case "Ciencias":
+                return "🔬";
+            case "Lenguaje":
+                return "📖";
+            case "Historia":
+                return "🏺";
+            case "Tecnología":
+                return "💻";
+            default:
+                return "📖";
+        }
+    };
+
+    function renderMaterialsList(materials, container) {
+        container.innerHTML = "";
+        if (materials.length === 0) {
+            vistaResultados.classList.remove("active");
+            vistaVacia.classList.add("active");
+            return;
+        }
+        materials.forEach(material => {
+
+            container.innerHTML += `
+            <div class="libro-card" data-materia="${material.category}" data-categoria="${material.type}" data-nivel="Secundaria"
+                  data-formato="${material.type}">
+                  <div class="libro-card-top">
+                    <button class="btn-fav" type="button">🖤</button>
+                    <div class="libro-cover-placeholder">${getIconForCategory(material.category)}</div>
+                  </div>
+                  
+                  <div class="libro-card-info">
+                    <div class="libro-tags"><span class="tag-mat">${material.category}</span><span class="tag-formato">${material.type}
+                        (PDF)</span></div>
+                    <h3>${material.name}</h3>
+                    <p class="autor">Por ${material.cuentas?.nombre_completo || "Autor desconocido"}</p>
+                    <button class="recursos-btn-detalle" data-id="${material.id}" type="button">Ver Detalle</button>
+                  </div>
+                </div>`;
+        });
     }
 
     btnLimpiarFiltros.addEventListener("click", resetFilters);
