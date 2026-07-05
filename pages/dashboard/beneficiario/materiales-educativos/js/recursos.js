@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnResetEmpty = document.getElementById("btn-reset-empty");
 
     let supabaseClient = null;
-
+    let remoteMaterials = [];
 
     let formatoSeleccionado = "Todos";
 
@@ -96,6 +96,13 @@ document.addEventListener("DOMContentLoaded", () => {
     containerTarjetas.addEventListener("click", (e) => {
         const botonDetalle = e.target.closest(".recursos-btn-detalle");
         if (botonDetalle) {
+            // Aqui recuperamos el id del material y buscamos en el array de materiales remotos
+            const materialId = parseInt(botonDetalle.getAttribute("data-id"), 10);
+            const materialSeleccionado = remoteMaterials.find(m => m.id === materialId);
+            if (materialSeleccionado) {
+                renderMaterialDetail(materialSeleccionado);
+            }
+
             vistaResultados.classList.remove("active");
             vistaDetalle.classList.add("active");
             window.scrollTo(0, 0);
@@ -132,7 +139,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ejecutarFiltradoGlobal();
     }
 
-
     function getSupabaseClient() {
         if (supabaseClient) return supabaseClient;
 
@@ -146,7 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return supabaseClient;
     }
 
-
     function mapSupabaseMaterial(record) {
         return {
             id: record.id,
@@ -157,6 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
             type: record.type || "Sin tipo",
             path: record.path || "#",
             image_preview: record.image_preview || null,
+            cuentas: record.cuentas || { nombre_completo: "Autor desconocido" },
         };
     }
 
@@ -172,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (error) {
                 throw error;
             }
-            const remoteMaterials = (data || []).map(mapSupabaseMaterial);
+            remoteMaterials = (data || []).map(mapSupabaseMaterial);
             renderMaterialsList(remoteMaterials, containerTarjetas);
         } catch (error) {
             console.error("No se pudieron obtener los materiales desde Supabase:", error);
@@ -180,21 +186,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-   const materialIcons = {
-    "Libros": "📚",
-    "Guías": "📝",
-    "Ejercicios": "✏️",
-    "Videos": "🎥",
-    "Matematicas": "🧮",
-    "Ciencias": "🔬",
-    "Lenguaje": "📖",
-    "Historia": "🏺",
-    "Tecnología": "💻"
-};
-   const getIconForCategory = (category) => {
-    // Si la categoría existe en el objeto, la devuelve; si no, usa el "fallback" por defecto ("📖")
-    return materialIcons[category] || "📖";
-};
+    const materialIcons = {
+        "Libros": "📚",
+        "Guías": "📝",
+        "Ejercicios": "✏️",
+        "Videos": "🎥",
+        "Matematicas": "🧮",
+        "Ciencias": "🔬",
+        "Lenguaje": "📖",
+        "Historia": "🏺",
+        "Tecnología": "💻"
+    };
+    const getIconForCategory = (category) => {
+        // Si la categoría existe en el objeto, la devuelve; si no, usa el "fallback" por defecto ("📖")
+        return materialIcons[category] || "📖";
+    };
     function renderMaterialsList(materials, container) {
         container.innerHTML = "";
         if (materials.length === 0) {
@@ -203,7 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         materials.forEach(material => {
-
             container.innerHTML += `
             <div class="libro-card" data-materia="${material.category}" data-categoria="${material.type}" data-nivel="Secundaria"
                   data-formato="${material.type}">
@@ -211,7 +216,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     <button class="btn-fav" type="button">🖤</button>
                     <div class="libro-cover-placeholder">${getIconForCategory(material.category)}</div>
                   </div>
-                  
                   <div class="libro-card-info">
                     <div class="libro-tags"><span class="tag-mat">${material.category}</span><span class="tag-formato">${material.type}
                         (PDF)</span></div>
@@ -222,6 +226,57 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>`;
         });
     }
+    // Vista Detalle Material
+    function renderMaterialDetail(material) {
+        
+        vistaDetalle.innerHTML = `
+            <button type="button" class="recursos-btn-volver" id="btn-back-to-results">
+            ← Recursos / <strong id="detalle-dinamico-breadcrumb">Cálculo Diferencial Avanzado</strong>
+          </button>
+
+          <div class="detalle-grid-layout">
+            <div class="detalle-col-izquierda">
+              <div class="detalle-main-card">
+                <div class="detalle-cover-big" id="detalle-icon-placeholder">🧮</div>
+                <div class="detalle-main-info">
+                  <div class="libro-tags">
+                    <span class="tag-mat" id="detalle-tag-materia">MATEMÁTICAS</span>
+                    <span class="tag-formato" id="detalle-tag-formato">Físico & Digital</span>
+                  </div>
+                  <h2 id="detalle-titulo">Cálculo Diferencial Avanzado</h2>
+                  <p class="autor-big">Por <strong id="detalle-autor">Dr. Carlos Fuentes</strong></p>
+
+                  <div class="detalle-mini-data">
+                    <div><small>PUBLICADO</small><br><strong>2024</strong></div>
+                    <div><small>NIVEL</small><br><strong>Superior / Pre</strong></div>
+                    <div><small>IDIOMA</small><br><strong>Español</strong></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="detalle-sinopsis">
+                <h3>Sinopsis</h3>
+                <p id="detalle-descripcion">Esta obra fundamental aborda los conceptos complejos del cálculo diferencial
+                  con un enfoque práctico y didáctico. Diseñado para estudiantes de ingeniería y ciencias exactas, el
+                  Dr. Carlos Fuentes desglosa desde límites y continuidad hasta derivadas parciales y optimización
+                  multivariable. El libro incluye más de 500 ejercicios resueltos y casos de estudio aplicados a la
+                  física y economía moderna.</p>
+              </div>
+
+              <!-- <div class="detalle-ficha-tecnica-box">
+                <h3>Ficha Técnica</h3>
+                <div class="ficha-tecnica-grid">
+                  <div><span class="f-label">ISBN-13</span> <span class="f-val">978-612-4456-12-5</span></div>
+                  <div><span class="f-label">Páginas</span> <span class="f-val">452</span></div>
+                  <div><span class="f-label">Editorial</span> <span class="f-val">Educación Global Perú</span></div>
+                  <div><span class="f-label">Dimensiones</span> <span class="f-val">21 × 29.7 cm</span></div>
+                  <div><span class="f-label">Materia</span> <span class="f-val" id="detalle-ficha-materia">Cálculo,
+                      Matemáticas</span></div>
+                  <div><span class="f-label">Peso</span> <span class="f-val">0.85 kg</span></div>
+                </div>
+              </div> `;
+    }
+
 
     btnLimpiarFiltros.addEventListener("click", resetFilters);
     btnResetEmpty.addEventListener("click", resetFilters);
