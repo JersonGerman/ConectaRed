@@ -228,15 +228,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // Vista Detalle Material
     function renderMaterialDetail(material) {
-        
-        vistaDetalle.innerHTML = `
-            <button type="button" class="recursos-btn-volver" id="btn-back-to-results">
-            ← Recursos / <strong id="detalle-dinamico-breadcrumb">Cálculo Diferencial Avanzado</strong>
-          </button>
 
-          <div class="detalle-grid-layout">
+        vistaDetalle.innerHTML = `
+        <button type="button" class="recursos-btn-volver" id="btn-back-to-results">
+           ← Recursos / <strong id="detalle-dinamico-breadcrumb">Cálculo Diferencial Avanzado</strong>
+        </button>
+
+        <div class="detalle-grid-layout">
             <div class="detalle-col-izquierda">
-              <div class="detalle-main-card">
+            <div class="detalle-main-card">
                 <div class="detalle-cover-big" id="detalle-icon-placeholder">🧮</div>
                 <div class="detalle-main-info">
                   <div class="libro-tags">
@@ -252,29 +252,52 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div><small>IDIOMA</small><br><strong>Español</strong></div>
                   </div>
                 </div>
-              </div>
+            </div>
 
-              <div class="detalle-sinopsis">
+            <div class="detalle-sinopsis">
                 <h3>Sinopsis</h3>
                 <p id="detalle-descripcion">Esta obra fundamental aborda los conceptos complejos del cálculo diferencial
-                  con un enfoque práctico y didáctico. Diseñado para estudiantes de ingeniería y ciencias exactas, el
-                  Dr. Carlos Fuentes desglosa desde límites y continuidad hasta derivadas parciales y optimización
-                  multivariable. El libro incluye más de 500 ejercicios resueltos y casos de estudio aplicados a la
-                  física y economía moderna.</p>
-              </div>
+                con un enfoque práctico y didáctico. Diseñado para estudiantes de ingeniería y ciencias exactas, el
+                Dr. Carlos Fuentes desglosa desde límites y continuidad hasta derivadas parciales y optimización
+                multivariable. El libro incluye más de 500 ejercicios resueltos y casos de estudio aplicados a la
+                física y economía moderna.</p>
+            </div>
 
-              <!-- <div class="detalle-ficha-tecnica-box">
+    <!--    <div class="detalle-ficha-tecnica-box">
                 <h3>Ficha Técnica</h3>
                 <div class="ficha-tecnica-grid">
                   <div><span class="f-label">ISBN-13</span> <span class="f-val">978-612-4456-12-5</span></div>
                   <div><span class="f-label">Páginas</span> <span class="f-val">452</span></div>
                   <div><span class="f-label">Editorial</span> <span class="f-val">Educación Global Perú</span></div>
                   <div><span class="f-label">Dimensiones</span> <span class="f-val">21 × 29.7 cm</span></div>
-                  <div><span class="f-label">Materia</span> <span class="f-val" id="detalle-ficha-materia">Cálculo,
-                      Matemáticas</span></div>
+                  <div><span class="f-label">Materia</span> <span class="f-val" id="detalle-ficha-materia">Cálculo, Matemáticas</span></div>
                   <div><span class="f-label">Peso</span> <span class="f-val">0.85 kg</span></div>
                 </div>
-              </div> `;
+            </div> --> 
+
+            <div class="detalle-col-derecha">
+              <div class="card-disponibilidad">
+                <div class="disp-status"><span class="dot-green"></span> En Stock (Lima)</div>
+                <button type="button" class="btn-action-download" onclick="alert('¡Descarga iniciada!')">📥 Descargar
+                  PDF (Digital)</button>
+                <button type="button" class="btn-action-loan" onclick="alert('Préstamo físico solicitado.')">Solicitar
+                  Préstamo Físico</button>
+
+                <div class="puntos-recojo">
+                  <h4>Puntos de recojo cercanos</h4>
+                  <p>📍 <strong>Biblioteca Central UNMSM</strong><br><small>Cercado de Lima • 2.5 km</small></p>
+                  <p>📍 <strong>Centro Comunitario Surco</strong><br><small>Av. Ayacucho • 8.1 km</small></p>
+                </div>
+              </div>
+
+              <div class="card-tip-ahorro">
+                💡 <strong>Tip de ahorro</strong>
+                <p>¿Sabías que puedes descargar la versión PDF comprimida para ahorrar hasta un 40% de datos?</p>
+              </div>
+            </div>
+            
+        </div>      
+              `;
     }
 
 
