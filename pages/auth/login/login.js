@@ -15,7 +15,7 @@ loginForm.addEventListener("submit", async (e) => {
     // ── Acceso admin (quemado, no pasa por Supabase) ──
     if (email === "admin@conectared.com" && password === "123456") {
         localStorage.setItem("loggedUser", email);
-        window.location.href = "../../dashboard/voluntario/dashboard";
+        window.location.href = "../../dashboard/admin/dashboard/admin.html";
         return;
     }
 
