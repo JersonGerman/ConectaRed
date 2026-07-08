@@ -43,7 +43,7 @@ a { text-decoration: none; }
 .recursos-app-wrapper { display: flex; flex: 1; }
 .recursos-main-content { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 
-/* ── SIDEBAR EXCLUSIVO (Corregido para evitar logos gigantes) ── */
+/* ── SIDEBAR CONECTARED (Calibrado Logo y Texto Lateral) ── */
 .recursos-sidebar {
   width: 260px;
   background: var(--rec-white) !important;
@@ -61,7 +61,7 @@ a { text-decoration: none; }
 }
 .recursos-sidebar .sidebar-logo-mark { 
   width: auto;
-  height: 32px; /* Reducido un poco para que no empuje el texto de forma desproporcionada */
+  height: 32px; 
   display: flex; 
   align-items: center; 
 }
@@ -71,7 +71,7 @@ a { text-decoration: none; }
   object-fit: contain; 
 }
 .recursos-sidebar .sidebar-brand-text { 
-  display: block; /* CAMBIADO de 'none' a 'block' para que vuelva a aparecer */
+  display: block; 
   font-weight: 700; 
   font-size: 18px; 
   color: var(--rec-dark); 
@@ -137,7 +137,7 @@ a { text-decoration: none; }
 .btn-download-pdf { border: 1px solid #cbd5e1; color: #475569; padding: 10px 16px; border-radius: 10px; font-size: 13.5px; font-weight: 600; cursor: pointer; }
 .compact-share { width: auto; padding: 10px 20px; border-radius: 10px; }
 
-/* ── MODALES ADAPTADOS AL DESIGN SYSTEM ── */
+/* ── MODALES ADAPTADOS ── */
 .modal-blur-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(38, 38, 65, 0.4); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
 .modal-blur-overlay.active { opacity: 1; pointer-events: auto; }
 .modal-layout-card { background: var(--rec-white); padding: 32px; border-radius: var(--rec-radius); width: 100%; max-width: 460px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); transform: translateY(15px); transition: transform 0.25s ease; }
@@ -158,13 +158,13 @@ a { text-decoration: none; }
 
 .textarea-comment-box { margin-bottom: 24px; text-align: left; }
 .textarea-comment-box label { display: block; font-size: 13px; font-weight: 600; color: var(--rec-dark); margin-bottom: 8px; }
-.textarea-comment-box textarea { width: 100%; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px; font-size: 13.5px; color: var(--rec-dark); resize: none; }
+.textarea-comment-box textarea { width: 100%; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px; font-size: 13.5px; color: var(--rec-dark); resize: none; border-color: #e2e8f0; }
 
 .modal-buttons-row { display: flex; gap: 12px; }
 .btn-publish-submit { flex: 1; background: var(--rec-teal); color: var(--rec-dark); padding: 12px; border-radius: 12px; font-weight: 700; font-size: 14px; cursor: pointer; }
 .btn-cancel-dismiss { border: 1px solid #e2e8f0; color: var(--rec-muted); padding: 12px 20px; border-radius: 12px; font-weight: 600; font-size: 14px; cursor: pointer; }
 
-/* ERROR MODAL INTERNO */
+/* ERROR MODAL */
 .text-center-modal { text-align: center; }
 .error-icon-circle { width: 60px; height: 60px; background: #fff1f2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
 .error-arrow-symbol { color: #f43f5e; font-size: 20px; font-weight: 700; }
@@ -180,8 +180,8 @@ a { text-decoration: none; }
 .divider-line { color: #cbd5e1; }
 .linkedin-mini-text { color: #0077b5; font-weight: 700; }
 
-/* TOAST FLOATING SYSTEM */
-.toast-popup-message { position: fixed; bottom: -60px; left: 50%; transform: translateX(-50%); background-color: var(--rec-dark); color: white; padding: 12px 24px; border-radius: 30px; font-size: 13.5px; font-weight: 500; box-shadow: 0 10px 15px rgba(0,0,0,0.15); z-index: 3000; transition: bottom 0.3s ease; }
+/* TOAST POPUP SYSTEM */
+.toast-popup-message { position: fixed; bottom: -60px; left: 50%; transform: translateX(-50%); background-color: var(--rec-dark); color: white; padding: 12px 24px; border-radius: 30px; font-size: 13.5px; font-weight: 500; box-shadow: 0 10px 15px rgba(0,0,0,0.15); z-index: 3000; transition: bottom 0.3s ease; text-align: center; }
 .toast-popup-message.show { bottom: 30px; }
 
 /* ── RECURSOS FOOTER MASTER ── */
