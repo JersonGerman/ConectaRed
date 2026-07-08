@@ -380,6 +380,9 @@ a {
   font-size: 1rem;
   color: var(--rec-dark);
   margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .material-card p {
