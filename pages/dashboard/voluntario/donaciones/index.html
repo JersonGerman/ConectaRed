@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./style.css"/>
 </head>
 
 <body class="aula-body">
@@ -26,7 +27,7 @@
       <div class="sidebar-menu-wrapper">
         <div class="sidebar-section">
           <p class="sidebar-section-title">MENU PRINCIPAL</p>
-          <a href="#" class="sidebar-link active">
+          <a href="../dashboard/index.html" class="sidebar-link">
             <span class="sidebar-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -34,9 +35,9 @@
                 <polyline points="9 22 9 12 15 12 15 22" />
               </svg>
             </span>
-            Inicio
+            Dashboard
           </a>
-          <a href="../materiales-educativos/" class="sidebar-link" id="menu-busqueda">
+          <a href="../publicar/" class="sidebar-link" id="menu-busqueda">
             <span class="sidebar-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -44,9 +45,9 @@
                   points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
               </svg>
             </span>
-            Búsqueda
+            Publicar
           </a>
-          <a href="/pages/mentorias/mentores.html" class="sidebar-link">
+          <a href="../donaciones/index.html" class="sidebar-link active">
             <span class="sidebar-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -56,9 +57,9 @@
                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
               </svg>
             </span>
-            Mis mentores <span class="sidebar-badge">2</span>
+            Donaciones <!--<span class="sidebar-badge">2</span> -->
           </a>
-          <a href="../mis-sesiones/" class="sidebar-link">
+          <a href="#" class="sidebar-link">
             <span class="sidebar-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -68,7 +69,7 @@
                 <line x1="3" y1="10" x2="21" y2="10" />
               </svg>
             </span>
-            Mis sesiones <span class="sidebar-badge">1</span>
+            Logros <span class="sidebar-badge">1</span>
           </a>
 
           <a href="#" class="sidebar-link">
@@ -78,7 +79,7 @@
                 <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
               </svg>
             </span>
-            Recursos guardados
+            Certificados
           </a>
           <a href="#" class="sidebar-link">
             <span class="sidebar-icon">
@@ -122,10 +123,6 @@
     <div class="recursos-main-content">
 
       <header class="recursos-navbar">
-        <!-- <div class="navbar-search-bar">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="main-search-input" placeholder="Buscar libros, guías, ejercicios..." />
-        </div> -->
         <nav class="navbar-links">
           <!-- <a href="#">Inicio</a>
           <a href="#">Mentores</a>
@@ -139,6 +136,61 @@
       </header>
 
       <main class="aula-content-body">
+
+        <div class="recursos-header-row">
+          <div class="recursos-title-area">
+            <h1 class="recursos-main-title">Gestión de Materiales</h1>
+            <p class="recursos-main-subtitle">Administra los libros donados y gestiona sus entregas a los estudiantes.
+            </p>
+          </div>
+
+          <div class="gestion-tab-container">
+            <button type="button" class="tab-toggle-btn active" id="tab-disponibles">Disponibles</button>
+            <button type="button" class="tab-toggle-btn" id="tab-historial">Historial</button>
+          </div>
+        </div>
+
+        <!-- GRID DE TARJETAS -->
+        <div class="recursos-cards-grid text-center-grid" id="materials-container">
+          <!-- Inyectado por el JavaScript -->
+        </div>
+
+        <!-- RESUMEN INFERIOR -->
+        <div class="gestion-bottom-layout">
+          <div class="impacto-resumen-box">
+            <div class="impacto-box-header">
+              <h3>Resumen de Impacto</h3>
+              <a href="#" class="link-teal-action">Ver Reporte Detallado</a>
+            </div>
+            <div class="impacto-metrics-grid">
+              <div class="metric-item">
+                <span class="metric-value">124</span>
+                <span class="metric-label">Libros Entregados</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-value">15</span>
+                <span class="metric-label">Estudiantes Apoyados</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-value">92%</span>
+                <span class="metric-label">Eficiencia de Entrega</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="proxima-recoleccion-box">
+            <h3>Próxima Recolección</h3>
+            <div class="recoleccion-card-inner">
+              <div class="calendar-mini-icon">📅</div>
+              <div class="recoleccion-details">
+                <h4>Sábado, 24 May</h4>
+                <p>Punto: Plaza San Martín</p>
+                <a href="#">Ver Detalles →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
 
       </main>
@@ -231,10 +283,16 @@
       </svg>
     </button>
   </div>
-   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="../../../../js/chatbot-openai-config.js"></script>
+
+
+  <div class="toast-popup-message" id="toastMessage"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- RUTA CORREGIDA: Llama directo al script gestion.js de la raíz -->
+     <script src="../../../../js/chatbot-openai-config.js"></script>
+  <script src="gestion.js"></script>
   <script src="../../../../js/chatbot-openai.js"></script>
   <script src="../../../../js/chatbot.js"></script>
+
 </body>
 
 </html>
