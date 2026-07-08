@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaRed — Panel de Administración</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-brand">
+            <img src="/images/logo-conectared.png" alt="Logo ConectaRed" class="logo" />
+            <span class="logo-text">Conecta<span class="logo-highlight">Red</span></span>
+        </div>
+        <span class="admin-header-tag">Panel de Administración</span>
+    </header>
+
+    <div class="app-layout">
+
+        <aside class="main-sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">MENU ADMIN</h3>
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="#" class="sidebar-link active" data-target="page-menu">
+                            <span class="sidebar-icon-placeholder">🏠</span>
+                            <span class="sidebar-text">Panel General</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-link" data-target="page-usuarios">
+                            <span class="sidebar-icon-placeholder">👥</span>
+                            <span class="sidebar-text">Usuarios y Verificaciones</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section footer-options" style="margin-top: auto;">
+                <h3 class="sidebar-title">OTRAS OPCIONES</h3>
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="#" id="btn-logout" class="sidebar-link logout">
+                            <span class="sidebar-icon-placeholder">🚪</span>
+                            <span class="sidebar-text" style="color: #e53e3e;">Cerrar Sesión</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="admin-dashboard-layout">
+
+                <section id="page-menu" class="admin-page active">
+                    <div class="menu-container">
+                        <h2 class="admin-title">Panel de Control General</h2>
+                        <p class="admin-subtitle">Selecciona una opción para gestionar la plataforma:</p>
+
+                        <div class="menu-grid">
+                            <button id="btn-nav-usuarios" class="menu-card">
+                                <div class="card-icon">👥</div>
+                                <h3>Usuarios y Verificaciones</h3>
+                                <p>Revisa perfiles de alumnos y mentores pendientes de aprobación.</p>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="page-usuarios" class="admin-page">
+                    <div class="list-container">
+                        <div class="section-header">
+                            <button class="btn-back" data-target="page-menu">← Volver al Menú</button>
+                            <h2>Selección de Perfiles</h2>
+                        </div>
+
+                        <div id="contenedor-tarjetas-usuarios" class="usuarios-grid"></div>
+                    </div>
+                </section>
+
+                <section id="page-detalle" class="admin-page">
+                    <div class="detalle-container">
+                        <div class="section-header">
+                            <button class="btn-back" data-target="page-usuarios">← Volver a la Lista</button>
+                            <h2>Detalle del Postulante</h2>
+                        </div>
+
+                        <div class="detalle-content">
+                            <div class="user-info-card">
+                                <h3 id="det-nombre">Cargando nombre...</h3>
+                                <p><strong>Rol:</strong> <span id="det-rol">-</span></p>
+                                <p><strong>Estado:</strong> <span id="det-estado" class="badge">-</span></p>
+                            </div>
+
+                            <div class="documento-section">
+                                <h3>Documento de Identidad / Validación</h3>
+                                <div class="canvas-visor">
+                                    <iframe id="det-archivo-frame" src="" width="100%" height="500px"></iframe>
+                                    <p id="det-archivo-error" style="display:none;">El usuario no adjuntó ningún archivo.</p>
+                                </div>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button id="btn-aprobar" class="btn-action approve">Aprobar Perfil (Verificar)</button>
+                                <button id="btn-rechazar" class="btn-action reject">Rechazar Postulación</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="logo-text">Conecta<span class="logo-highlight">Red</span></span>
+                </div>
+                <p class="footer-description">
+                    Conectando estudiantes con oportunidades educativas en todo el Perú.
+                </p>
+            </div>
+            <div class="footer-links-group">
+                <h4 class="footer-title">Plataforma</h4>
+                <ul class="footer-list">
+                    <li><a href="#">Buscar Mentores</a></li>
+                    <li><a href="#">Recursos</a></li>
+                    <li><a href="#">Comunidad</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-group">
+                <h4 class="footer-title">Soporte</h4>
+                <ul class="footer-list">
+                    <li><a href="#">Centro de Ayuda</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-socials">
+                <h4 class="footer-title">Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="Facebook"><span>FB</span></a>
+                    <a href="#" class="social-icon" aria-label="Twitter"><span>TW</span></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><span>IG</span></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
