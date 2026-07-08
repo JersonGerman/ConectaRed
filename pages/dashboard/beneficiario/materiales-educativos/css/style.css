@@ -523,6 +523,7 @@ input:checked+.slider:before {
   align-items: center;
 }
 
+
 .tag-mat {
   background: #e0f2fe;
   color: #0369a1;
@@ -556,6 +557,9 @@ input:checked+.slider:before {
   margin-bottom: 6px;
   line-height: 1.4;
   color: var(--rec-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .libro-card-info .autor {
