@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnResetEmpty = document.getElementById("btn-reset-empty");
 
     let supabaseClient = null;
-
+    let remoteMaterials = [];
 
     let formatoSeleccionado = "Todos";
 
@@ -96,15 +96,32 @@ document.addEventListener("DOMContentLoaded", () => {
     containerTarjetas.addEventListener("click", (e) => {
         const botonDetalle = e.target.closest(".recursos-btn-detalle");
         if (botonDetalle) {
+            // Aqui recuperamos el id del material y buscamos en el array de materiales remotos
+            const materialId = parseInt(botonDetalle.getAttribute("data-id"), 10);
+            const materialSeleccionado = remoteMaterials.find(m => m.id === materialId);
+            if (materialSeleccionado) {
+                console.log("Material seleccionado:", materialSeleccionado);
+                renderMaterialDetail(materialSeleccionado);
+            }
+
             vistaResultados.classList.remove("active");
             vistaDetalle.classList.add("active");
             window.scrollTo(0, 0);
         }
     });
 
-    btnBackToResults.addEventListener("click", () => {
-        vistaDetalle.classList.remove("active");
-        vistaResultados.classList.add("active");
+    vistaDetalle.addEventListener("click", (e) => {
+        if (e.target.id === "btn-back-to-results") {
+            vistaDetalle.classList.remove("active");
+            vistaResultados.classList.add("active");
+        }else if (e.target.classList.contains("btn-action-download")) {
+            const materialId = parseInt(e.target.getAttribute("data-id"), 10);
+            const materialSeleccionado = remoteMaterials.find(m => m.id === materialId);
+            console.log("Material seleccionado para descarga:", materialSeleccionado);
+            if (materialSeleccionado) {
+                descargarPDF(materialSeleccionado.path, `${materialSeleccionado.name}.pdf`);
+            }
+        }
     });
 
     toggleMegasInput.addEventListener("change", () => {
@@ -132,7 +149,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ejecutarFiltradoGlobal();
     }
 
-
     function getSupabaseClient() {
         if (supabaseClient) return supabaseClient;
 
@@ -146,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return supabaseClient;
     }
 
-
     function mapSupabaseMaterial(record) {
         return {
             id: record.id,
@@ -157,6 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
             type: record.type || "Sin tipo",
             path: record.path || "#",
             image_preview: record.image_preview || null,
+            cuentas: record.cuentas || { nombre_completo: "Autor desconocido" },
         };
     }
 
@@ -172,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (error) {
                 throw error;
             }
-            const remoteMaterials = (data || []).map(mapSupabaseMaterial);
+            remoteMaterials = (data || []).map(mapSupabaseMaterial);
             renderMaterialsList(remoteMaterials, containerTarjetas);
         } catch (error) {
             console.error("No se pudieron obtener los materiales desde Supabase:", error);
@@ -180,21 +196,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-   const materialIcons = {
-    "Libros": "📚",
-    "Guías": "📝",
-    "Ejercicios": "✏️",
-    "Videos": "🎥",
-    "Matematicas": "🧮",
-    "Ciencias": "🔬",
-    "Lenguaje": "📖",
-    "Historia": "🏺",
-    "Tecnología": "💻"
-};
-   const getIconForCategory = (category) => {
-    // Si la categoría existe en el objeto, la devuelve; si no, usa el "fallback" por defecto ("📖")
-    return materialIcons[category] || "📖";
-};
+    const materialIcons = {
+        "Libros": "📚",
+        "Guías": "📝",
+        "Ejercicios": "✏️",
+        "Videos": "🎥",
+        "Matematicas": "🧮",
+        "Ciencias": "🔬",
+        "Lenguaje": "📖",
+        "Historia": "🏺",
+        "Tecnología": "💻"
+    };
+    const getIconForCategory = (category) => {
+        // Si la categoría existe en el objeto, la devuelve; si no, usa el "fallback" por defecto ("📖")
+        return materialIcons[category] || "📖";
+    };
     function renderMaterialsList(materials, container) {
         container.innerHTML = "";
         if (materials.length === 0) {
@@ -203,7 +219,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         materials.forEach(material => {
-
             container.innerHTML += `
             <div class="libro-card" data-materia="${material.category}" data-categoria="${material.type}" data-nivel="Secundaria"
                   data-formato="${material.type}">
@@ -211,7 +226,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     <button class="btn-fav" type="button">🖤</button>
                     <div class="libro-cover-placeholder">${getIconForCategory(material.category)}</div>
                   </div>
-                  
                   <div class="libro-card-info">
                     <div class="libro-tags"><span class="tag-mat">${material.category}</span><span class="tag-formato">${material.type}
                         (PDF)</span></div>
@@ -222,6 +236,89 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>`;
         });
     }
+    // Función para descargar PDF
+    function descargarPDF(urlPdf, nombreArchivo) {
+
+        if (!urlPdf || urlPdf === "#") {
+            alert("No hay archivo disponible para descargar.");
+            return;
+        }
+
+        // Crear un elemento <a> temporal para descargar
+        const enlaceDescarga = document.createElement("a");
+        enlaceDescarga.href = urlPdf;
+        enlaceDescarga.download = nombreArchivo || "documento.pdf";
+        document.body.appendChild(enlaceDescarga);
+        enlaceDescarga.click();
+        document.body.removeChild(enlaceDescarga);
+    }
+
+    // Vista Detalle Material
+    function renderMaterialDetail(material) {
+
+        const breakcrumbTitle = material.name.length > 30 ? material.name.substring(0, 30) + "..." : material.name;
+
+        const typeDocument = material.type || "Desconocido";
+        const categoryDocument = material.category || "Desconocido";
+        const authorDocument = material.cuentas?.nombre_completo || "Autor desconocido";
+        const descriptionDocument = material.description || "Sin descripción disponible.";
+        const pathDocumentBucket = material.path || "#";
+
+        let htmlButtons = typeDocument === "digital" ? `
+        <button type="button" class="btn-action-download" data-id="${material.id}">📥 Descargar PDF (Digital)</button>`:`
+        <button type="button" class="btn-action-loan" onclick="alert('Préstamo físico solicitado.')">Solicitar Préstamo Físico</button>
+        `;
+        vistaDetalle.innerHTML = `
+        <button type="button" class="recursos-btn-volver" id="btn-back-to-results">
+           ← Recursos / <strong id="detalle-dinamico-breadcrumb">${breakcrumbTitle}</strong>
+        </button>
+
+        <div class="detalle-grid-layout">
+            <div class="detalle-col-izquierda">
+                <div class="detalle-main-card">
+                    <div class="detalle-cover-big" id="detalle-icon-placeholder">🧮</div>
+                    <div class="detalle-main-info">
+                    <div class="libro-tags">
+                        <span class="tag-mat" id="detalle-tag-materia">${categoryDocument}</span>
+                        <span class="tag-formato" id="detalle-tag-formato">${typeDocument}</span>
+                    </div>
+                    <h2 id="detalle-titulo">${material.name}</h2>
+                    <p class="autor-big">Por <strong id="detalle-autor">${authorDocument}</strong></p>
+
+                    <div class="detalle-mini-data">
+                        <div><small>PUBLICADO</small><br><strong>2024</strong></div>
+                        <div><small>NIVEL</small><br><strong>Superior / Pre</strong></div>
+                        <div><small>IDIOMA</small><br><strong>Español</strong></div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="detalle-sinopsis">
+                    <h3>Sinopsis</h3>
+                    <p id="detalle-descripcion">${descriptionDocument}</p>
+                </div>
+            </div>
+            <div class="detalle-col-derecha">
+              <div class="card-disponibilidad">
+                <div class="disp-status"><span class="dot-green"></span> En Stock (Lima)</div>
+                ${htmlButtons}
+                <div class="puntos-recojo">
+                 <!-- <h4>Puntos de recojo cercanos</h4>
+                  <p>📍 <strong>Biblioteca Central UNMSM</strong><br><small>Cercado de Lima • 2.5 km</small></p>
+                  <p>📍 <strong>Centro Comunitario Surco</strong><br><small>Av. Ayacucho • 8.1 km</small></p> -->
+                </div>
+              </div>
+
+              <div class="card-tip-ahorro">
+                💡 <strong>Tip de ahorro</strong>
+                <p>¿Sabías que puedes descargar la versión PDF comprimida para ahorrar hasta un 40% de datos?</p>
+              </div>
+            </div>
+            
+        </div>      
+              `;
+    }
+
 
     btnLimpiarFiltros.addEventListener("click", resetFilters);
     btnResetEmpty.addEventListener("click", resetFilters);
