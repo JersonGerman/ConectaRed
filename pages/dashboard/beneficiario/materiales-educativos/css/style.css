@@ -738,6 +738,7 @@ input:checked+.slider:before {
   font-weight: 700;
   font-size: 14px;
   margin-bottom: 12px;
+  cursor: pointer;
 }
 
 .btn-action-loan {
