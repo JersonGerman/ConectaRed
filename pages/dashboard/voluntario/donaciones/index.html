@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./style.css"/>
 </head>
 
 <body class="aula-body">
@@ -26,7 +27,7 @@
       <div class="sidebar-menu-wrapper">
         <div class="sidebar-section">
           <p class="sidebar-section-title">MENU PRINCIPAL</p>
-          <a href="../dashboard/" class="sidebar-link">
+          <a href="../dashboard/index.html" class="sidebar-link">
             <span class="sidebar-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -36,7 +37,7 @@
             </span>
             Dashboard
           </a>
-          <a href="#" class="sidebar-link active" id="menu-busqueda">
+          <a href="../publicar/" class="sidebar-link" id="menu-busqueda">
             <span class="sidebar-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -46,7 +47,7 @@
             </span>
             Publicar
           </a>
-          <a href="../donaciones/index.html" class="sidebar-link">
+          <a href="../donaciones/index.html" class="sidebar-link active">
             <span class="sidebar-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -135,77 +136,65 @@
       </header>
 
       <main class="aula-content-body">
-        <div class="materials-shell">
-          <section class="materials-hero">
-            <div>
-              <p class="eyebrow">Gestión de recursos</p>
-              <h1>Materiales didácticos compartidos</h1>
-              <p>Consulta tus recursos publicados y añade nuevos documentos PDF desde una carga rápida y ordenada.</p>
-            </div>
-            <button type="button" id="open-upload-modal-btn" class="materials-action-btn">
-              + Cargar material
-            </button>
-          </section>
 
-          <section class="materials-list-section">
-            <div class="materials-list-header">
-              <div>
-                <h2>Materiales cargados</h2>
-                <p>Revisa los recursos que ya están disponibles para la comunidad.</p>
-              </div>
-            </div>
+        <div class="recursos-header-row">
+          <div class="recursos-title-area">
+            <h1 class="recursos-main-title">Gestión de Materiales</h1>
+            <p class="recursos-main-subtitle">Administra los libros donados y gestiona sus entregas a los estudiantes.
+            </p>
+          </div>
 
-            <div id="materials-list" class="materials-list"></div>
-          </section>
+          <div class="gestion-tab-container">
+            <button type="button" class="tab-toggle-btn active" id="tab-disponibles">Disponibles</button>
+            <button type="button" class="tab-toggle-btn" id="tab-historial">Historial</button>
+          </div>
         </div>
 
-        <div id="upload-modal" class="upload-modal" aria-hidden="true">
-          <div class="upload-modal-backdrop" data-close-modal></div>
-          <div class="upload-modal-panel" role="dialog" aria-modal="true" aria-labelledby="upload-modal-title">
-            <div class="upload-modal-header">
-              <div>
-                <p class="eyebrow">Nuevo material</p>
-                <h2 id="upload-modal-title">Subir materiales didácticos</h2>
-              </div>
-              <button type="button" id="upload-modal-close" class="upload-modal-close" aria-label="Cerrar">×</button>
+        <!-- GRID DE TARJETAS -->
+        <div class="recursos-cards-grid text-center-grid" id="materials-container">
+          <!-- Inyectado por el JavaScript -->
+        </div>
+
+        <!-- RESUMEN INFERIOR -->
+        <div class="gestion-bottom-layout">
+          <div class="impacto-resumen-box">
+            <div class="impacto-box-header">
+              <h3>Resumen de Impacto</h3>
+              <a href="#" class="link-teal-action">Ver Reporte Detallado</a>
             </div>
+            <div class="impacto-metrics-grid">
+              <div class="metric-item">
+                <span class="metric-value">124</span>
+                <span class="metric-label">Libros Entregados</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-value">15</span>
+                <span class="metric-label">Estudiantes Apoyados</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-value">92%</span>
+                <span class="metric-label">Eficiencia de Entrega</span>
+              </div>
+            </div>
+          </div>
 
-            <div class="upload-container upload-modal-container">
-              <div class="upload-grid">
-                <div id="upload-drop-zone" class="upload-drop-zone">
-                  <span class="upload-drop-zone-icon">📚</span>
-                  <p class="upload-drop-zone-text">
-                    Arrastrad aquí vuestros archivos PDF
-                  </p>
-                  <p class="upload-drop-zone-subtext">
-                    o pinchad para examinar vuestro equipo
-                  </p>
-                  <span class="upload-drop-zone-button">Seleccionar Archivos</span>
-                  <input type="file" id="upload-file-input" class="upload-file-input" multiple accept=".pdf" />
-                </div>
-
-                <div class="publish-queue-card">
-                  <h2 class="publish-queue-title">
-                    Cola de cargas pendientes
-                  </h2>
-
-                  <form id="publish-form" class="publish-form">
-                    <ul id="publishing-file-list" class="publishing-file-list">
-                      <li id="no-files-placeholder" class="no-files-placeholder">
-                        No habéis seleccionado ningún documento aún.
-                      </li>
-                    </ul>
-
-                    <button type="submit" id="btn-submit-all" class="btn-submit-all" disabled>
-                      Publicar Materiales Seleccionados
-                    </button>
-                  </form>
-                </div>
+          <div class="proxima-recoleccion-box">
+            <h3>Próxima Recolección</h3>
+            <div class="recoleccion-card-inner">
+              <div class="calendar-mini-icon">📅</div>
+              <div class="recoleccion-details">
+                <h4>Sábado, 24 May</h4>
+                <p>Punto: Plaza San Martín</p>
+                <a href="#">Ver Detalles →</a>
               </div>
             </div>
           </div>
         </div>
+
+
+
       </main>
+
 
     </div>
   </div>
@@ -295,13 +284,12 @@
     </button>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    window.SUPABASE_URL = "https://sviblsfhersxggcqptfh.supabase.co";
-    window.SUPABASE_ANON_KEY = "sb_publishable_GmUHZfbasiOBPudKKi1r9Q_f01Wycu2";
-  </script>
+
+  <div class="toast-popup-message" id="toastMessage"></div>
+
+  <!-- RUTA CORREGIDA: Llama directo al script gestion.js de la raíz -->
+  <script src="gestion.js"></script>
   <script src="js/chatbot.js"></script>
-  <script src="js/publicar.js"></script>
 
 </body>
 
