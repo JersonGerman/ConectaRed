@@ -93,22 +93,63 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    containerTarjetas.addEventListener("click", (e) => {
-        const botonDetalle = e.target.closest(".recursos-btn-detalle");
-        if (botonDetalle) {
-            // Aqui recuperamos el id del material y buscamos en el array de materiales remotos
-            const materialId = parseInt(botonDetalle.getAttribute("data-id"), 10);
-            const materialSeleccionado = remoteMaterials.find(m => m.id === materialId);
-            if (materialSeleccionado) {
-                console.log("Material seleccionado:", materialSeleccionado);
-                renderMaterialDetail(materialSeleccionado);
+containerTarjetas.addEventListener("click", async (e) => {
+    if (e.target.classList.contains("btn-fav")) {
+        const card = e.target.closest(".libro-card");
+        const btnDetalle = card.querySelector(".recursos-btn-detalle");
+        const materialId = parseInt(btnDetalle.getAttribute("data-id"), 10);
+
+        try {
+            const supabase = getSupabaseClient();
+            const { data: userData } = await supabase.auth.getUser();
+            if (!userData?.user) {
+                alert("Debes iniciar sesión para guardar favoritos.");
+                return;
             }
 
-            vistaResultados.classList.remove("active");
-            vistaDetalle.classList.add("active");
-            window.scrollTo(0, 0);
+            const yaEsFavorito = e.target.classList.contains("active");
+
+            if (yaEsFavorito) {
+                await supabase.from("favoritos").delete()
+                    .eq("id_cuenta", userData.user.id)
+                    .eq("id_recurso", materialId);
+                e.target.classList.remove("active");
+                e.target.textContent = "🖤";
+            } else {
+                await supabase.from("favoritos").insert({
+                    id_cuenta: userData.user.id,
+                    id_recurso: materialId
+                });
+                e.target.classList.add("active");
+                e.target.textContent = "💙";
+            }
+        } catch (error) {
+            console.error("Error guardando favorito:", error);
         }
-    });
+    }
+        const btnDetalle = e.target.closest(".recursos-btn-detalle");
+    
+    if (btnDetalle) {
+    
+        const id = parseInt(btnDetalle.dataset.id);
+    
+        const material = remoteMaterials.find(m => m.id === id);
+    
+        if(material){
+        
+            renderMaterialDetail(material);
+        
+            vistaResultados.classList.remove("active");
+            vistaVacia.classList.remove("active");
+            vistaDetalle.classList.add("active");
+        
+        }
+    
+        return;
+    }
+});
+
+
 
     vistaDetalle.addEventListener("click", (e) => {
         if (e.target.id === "btn-back-to-results") {
@@ -131,12 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    containerTarjetas.addEventListener("click", (e) => {
-        if (e.target.classList.contains("btn-fav")) {
-            e.target.classList.toggle("active");
-            e.target.textContent = e.target.classList.contains("active") ? "💙" : "🖤";
-        }
-    });
+
 
     function resetFilters() {
         mainSearchInput.value = "";

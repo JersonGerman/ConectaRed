@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ConectaRed — Mi Aula Virtual</title>
+  <title>ConectaRed — Materiales Educativos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="aula-body">
+<body class="recursos-body">
 
   <div class="recursos-app-wrapper">
 
@@ -58,7 +58,7 @@
             </span>
             Mis mentores <span class="sidebar-badge">2</span>
           </a>
-          <a href="#" class="sidebar-link active">
+          <a href="../mis-sesiones/" class="sidebar-link">
             <span class="sidebar-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -72,8 +72,12 @@
           </a>
           <!-- <a href="#" class="sidebar-link">
             <span class="sidebar-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </span> 
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </span>
             Logros
           </a> -->
           <a href="../recursos-favoritos/" class="sidebar-link active" id="menu-favoritos">
@@ -129,12 +133,12 @@
       <header class="recursos-navbar">
         <!-- <div class="navbar-search-bar">
           <span class="search-icon">🔍</span>
-          <input type="text" placeholder="Buscar libros, guías, ejercicios..." />
+          <input type="text" id="main-search-input" placeholder="Buscar libros, guías, ejercicios..." />
         </div> -->
         <nav class="navbar-links">
           <!-- <a href="#">Inicio</a>
-          <a href="../mentores/">Mentores</a>
-          <a href="#" class="">Recursos</a>
+          <a href="#">Mentores</a>
+          <a href="#" class="active">Recursos</a>
           <a href="#">Comunidad</a> -->
         </nav>
         <div class="navbar-profile">
@@ -143,16 +147,242 @@
         </div>
       </header>
 
-      <main class="aula-content-body">
-        <!-- <nav class="aula-breadcrumb">Dashboard &gt; <span>Mis Sesiones</span></nav> -->
-        <h1 class="aula-main-title">Mis Sesiones</h1>
-
-        <div class="sesiones-container" id="sesiones">
-        </div>
-        <!-- Esto se renderiza de una base de datos -->
-      </main>
-
-
+    <main class="recursos-content-body">
+    
+        <!-- Encabezado -->
+    
+        <section class="favoritos-header">
+        
+            <div>
+            
+                <h1 class="recursos-main-title">
+                    Recursos Guardados
+                </h1>
+              
+                <p class="recursos-main-subtitle">
+                    Accede rápidamente a todos los recursos que marcaste como favoritos.
+                </p>
+              
+            </div>
+          
+        </section>
+      
+        <!-- Filtros -->
+      
+        <section class="favoritos-filtros">
+        
+            <button class="filtro-btn active">
+                Todos
+            </button>
+          
+            <button class="filtro-btn">
+                Libros
+            </button>
+          
+            <button class="filtro-btn">
+                Videos
+            </button>
+          
+            <button class="filtro-btn">
+                Guías
+            </button>
+          
+            <button class="filtro-btn">
+                PDF
+            </button>
+          
+        </section>
+      
+        <!-- Buscador -->
+      
+        <section class="favoritos-search">
+        
+            <div class="navbar-search-bar">
+            
+                <span>🔍</span>
+            
+                <input
+                    id="buscarFavorito"
+                    type="text"
+                    placeholder="Buscar recurso..."
+                >
+            
+            </div>
+          
+        </section>
+      
+        <!-- Grid -->
+      
+        <section class="favoritos-grid">
+        
+            <!-- Card -->
+        
+            <article class="favorito-card">
+            
+                <div class="favorito-img">
+                
+                    <img
+                        src="../../../../assets/images/libro1.jpg"
+                        alt="Libro"
+                    >
+                
+                    <button class="btn-fav active">
+                        ❤️
+                    </button>
+                  
+                    <span class="tipo-recurso">
+                        Libro
+                    </span>
+                  
+                </div>
+              
+                <div class="favorito-body">
+                
+                    <h3>
+                        Álgebra Lineal
+                    </h3>
+                  
+                    <p class="autor">
+                        Gilbert Strang
+                    </p>
+                  
+                    <div class="progreso">
+                    
+                        <div class="barra">
+                        
+                            <div class="barra-fill" style="width:60%;"></div>
+                        
+                        </div>
+                      
+                        <span>60%</span>
+                      
+                    </div>
+                  
+                    <div class="card-footer">
+                    
+                        <small>
+                            Guardado hace 3 días
+                        </small>
+                      
+                        <button class="recursos-btn-detalle">
+                            Abrir
+                        </button>
+                      
+                    </div>
+                  
+                </div>
+              
+            </article>
+          
+            <!-- Card -->
+          
+            <article class="favorito-card">
+            
+                <div class="favorito-img">
+                
+                    <img
+                        src="../../../../assets/images/video1.jpg"
+                        alt="Video"
+                    >
+                
+                    <button class="btn-fav active">
+                        ❤️
+                    </button>
+                  
+                    <span class="tipo-recurso">
+                        Video
+                    </span>
+                  
+                </div>
+              
+                <div class="favorito-body">
+                
+                    <h3>
+                        Curso de HTML y CSS
+                    </h3>
+                  
+                    <p class="autor">
+                        Juan Pérez
+                    </p>
+                  
+                    <div class="estado completado">
+                    
+                        ✔ Completado
+                    
+                    </div>
+                  
+                    <div class="card-footer">
+                    
+                        <small>
+                            Guardado hace 1 semana
+                        </small>
+                      
+                        <button class="recursos-btn-detalle">
+                            Ver curso
+                        </button>
+                      
+                    </div>
+                  
+                </div>
+              
+            </article>
+          
+            <!-- Card -->
+          
+            <article class="favorito-card">
+            
+                <div class="favorito-img">
+                
+                    <img
+                        src="../../../../assets/images/pdf.jpg"
+                        alt="PDF"
+                    >
+                
+                    <button class="btn-fav active">
+                        ❤️
+                    </button>
+                  
+                    <span class="tipo-recurso">
+                        PDF
+                    </span>
+                  
+                </div>
+              
+                <div class="favorito-body">
+                
+                    <h3>
+                        Guía de Física
+                    </h3>
+                  
+                    <p class="autor">
+                        Ministerio de Educación
+                    </p>
+                  
+                    <div class="estado pendiente">
+                    
+                        Sin empezar
+                    
+                    </div>
+                  
+                    <div class="card-footer">
+                    
+                        <small>
+                            Guardado ayer
+                        </small>
+                      
+                        <button class="recursos-btn-detalle">
+                            Leer
+                        </button>
+                      
+                    </div>
+                  
+                </div>
+              
+            </article>
+          
+        </section>
+      
+    </main>
     </div>
   </div>
 
@@ -206,93 +436,6 @@
     </div>
   </footer>
 
-  <div class="modal-container" id="modal-puntuacion" style="display: none;">
-    <div class="puntuacion-container">
-
-      <!-- Recordatorio persistente (Escenario Alternativo) -->
-      <div class="reminder-banner hidden" id="reminder-banner">
-        <span class="reminder-icon">🔔</span>
-        <div class="reminder-text">
-          <strong>Tienes una reseña pendiente</strong>
-          <p>Cerraste la ventana de calificación antes de terminar. Complétala para ayudar a otros estudiantes.</p>
-        </div>
-        <button class="btn-complete-reminder" id="btn-reopen-rating">Completar reseña</button>
-      </div>
-
-      <!-- Info de la sesión -->
-      <div class="session-info-card">
-        <img id="mentor-avatar"
-          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150"
-          alt="Foto del mentor" class="session-mentor-avatar">
-        <div class="session-mentor-info">
-          <h2 class="session-title">Califica tu asesoría</h2>
-          <p class="session-meta">
-            Sesión con <strong id="mentor-name">Carlos Mendoza</strong> · <span id="session-subject">Historia &amp;
-              Literatura</span>
-          </p>
-          <p class="session-date" id="session-date">📅 14 de junio, 2026 · 🕒 4:00 PM - 5:00 PM</p>
-          <span class="session-status-badge" id="session-status-badge">Sesión finalizada</span>
-        </div>
-      </div>
-
-      <!-- Escenario Error: sesión no realizada -->
-      <div class="error-banner hidden" id="error-banner">
-        <span class="error-icon">⚠️</span>
-        <div class="error-text">
-          <strong>No es posible calificar esta sesión</strong>
-          <p>No encontramos asistencia registrada para esta asesoría. Solo puedes calificar sesiones que se hayan
-            realizado.</p>
-        </div>
-      </div>
-
-      <!-- Formulario de calificación -->
-      <section class="rating-form" id="rating-form">
-        <h3 class="rating-form-title">¿Cómo calificarías a tu mentor?</h3>
-
-        <div class="rating-stars" id="rating-stars">
-          <span class="star" data-value="1">★</span>
-          <span class="star" data-value="2">★</span>
-          <span class="star" data-value="3">★</span>
-          <span class="star" data-value="4">★</span>
-          <span class="star" data-value="5">★</span>
-        </div>
-        <p class="rating-helper" id="rating-helper">Selecciona de 1 a 5 estrellas</p>
-
-        <label for="rating-comment" class="rating-comment-label">Cuéntale a otros estudiantes tu experiencia</label>
-        <textarea id="rating-comment" class="rating-comment" rows="4"
-          placeholder="Ej: Me ayudó muchísimo a entender derivadas, explica con paciencia..."></textarea>
-
-        <div class="rating-form-actions">
-          <button class="btn-cancel-rating" id="btn-cancel-rating">Cerrar sin calificar</button>
-          <button class="btn-submit-rating" id="btn-submit-rating" disabled="">Publicar calificación</button>
-        </div>
-      </section>
-
-      <!-- Confirmación de éxito -->
-      <section class="success-banner hidden" id="success-banner">
-        <span class="success-icon">✓</span>
-        <div class="success-text">
-          <strong>¡Gracias por tu calificación!</strong>
-          <p>Tu puntuación ya se refleja en el perfil público del mentor.</p>
-        </div>
-        <div class="profile-preview-card">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150"
-            alt="Foto del mentor" class="profile-preview-avatar">
-          <div class="profile-preview-info">
-            <h4 id="preview-mentor-name">Carlos Mendoza</h4>
-            <div class="profile-preview-rating">
-              <span class="profile-preview-stars" id="preview-stars">★★★★★</span>
-              <span id="preview-score">4.9</span>
-              <span class="profile-preview-count" id="preview-count">(90 reseñas)</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </div>
-  </div>
-
-
   <!-- ChatBot ConectaChat -->
   <div class="container-chatbot" id="chatbot-container" style="display: none;">
     <div class="chatbot-header">
@@ -328,11 +471,15 @@
     </button>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    window.SUPABASE_URL = "https://sviblsfhersxggcqptfh.supabase.co";
+    window.SUPABASE_ANON_KEY = "sb_publishable_GmUHZfbasiOBPudKKi1r9Q_f01Wycu2";
+  </script>
+
   <script src="js/chatbot.js"></script>
 
-
-  <script src="./js/puntuacion.js"></script>
-
+  <script src="js/favoritos.js"></script>
 </body>
 
 </html>
